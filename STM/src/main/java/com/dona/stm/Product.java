@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @author Cveti
  */
-public class Product {
+public class Product implements IProduct{
     
     private String name;
     private String brand;
