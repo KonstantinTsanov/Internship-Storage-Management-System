@@ -7,7 +7,7 @@ package com.dona.stm;
 
 /**
  *
- * @author KTsan
+ * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class Main {
     
