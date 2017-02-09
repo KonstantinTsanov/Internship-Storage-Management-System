@@ -11,83 +11,70 @@ import java.math.BigDecimal;
  *
  * @author Cveti
  */
-public class Product implements IProduct{
-    
+public class Product implements IProduct {
+
     private String name;
     private String brand;
     private float buyPrice;
     private float sellPrice;
     private float sellPriceWholeSaler;
     private float retailersPrice;
-    
-    public Product(String name, String brand, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice)
-    {
-        SetName(name);
-        SetBrand(brand);
-        SetBuyPrice(Float.valueOf(buyPrice));
-        SetSellPrice(Float.valueOf(sellPrice));
-        SetSellPriceWholeSaler(Float.valueOf(sellPriceWholeSaler));
-        SetRetailersPrice(Float.valueOf(retailersPrice));
+
+    public Product(String name, String brand, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
+        setName(name);
+        setBrand(brand);
+        setBuyPrice(Float.valueOf(buyPrice));
+        setSellPrice(Float.valueOf(sellPrice));
+        setSellPriceWholeSaler(Float.valueOf(sellPriceWholeSaler));
+        setRetailersPrice(Float.valueOf(retailersPrice));
     }
-    
-    public String GetName()
-    {
+
+    public String getName() {
         return this.name;
     }
-    
-    private void SetName(String val)
-    {
+
+    private void setName(String val) {
         this.name = val;
     }
-    
-    public String GetBrand()
-    {
+
+    public String getBrand() {
         return this.brand;
     }
-    
-    private void SetBrand(String val)
-    {
+
+    private void setBrand(String val) {
         this.brand = val;
     }
-    
-    public float GetBuyPrice()
-    {
+
+    public float getBuyPrice() {
         return this.buyPrice;
     }
-    
-    private void SetBuyPrice(float val)
-    {
+
+    private void setBuyPrice(float val) {
         this.buyPrice = val;
     }
-    
-    public float GetSellPrice()
-    {
+
+    public float getSellPrice() {
         return this.sellPrice;
     }
-    
-    private void SetSellPrice(float val )
-    {
-        this.sellPrice = val ;
+
+    private void setSellPrice(float val) {
+        this.sellPrice = val;
     }
-    
-    public float GetSellPriceWholeSaler()
-    {
+
+    public float getSellPriceWholeSaler() {
         return this.sellPriceWholeSaler;
     }
-    
-    private void SetSellPriceWholeSaler(float val)
-    {
+
+    private void setSellPriceWholeSaler(float val) {
         this.sellPriceWholeSaler = val;
     }
-    
-    public float GetRetailersPrice()
-    {
+
+    public float getRetailersPrice() {
         return this.retailersPrice;
     }
-    
-    private void SetRetailersPrice(float val)
-    {
+
+    private void setRetailersPrice(float val) {
         this.retailersPrice = val;
     }
-    
+
 }
