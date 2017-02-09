@@ -5,13 +5,12 @@
  */
 package com.dona.stm.dba;
 
-import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import lombok.extern.java.Log;
 
 /**
@@ -25,7 +24,7 @@ public class dbAccess {
 
     public dbAccess(String connString, String user, String pass) throws SQLException {
         conn = DriverManager.getConnection(connString, user, pass);
-        conn.setAutoCommit(true);
+
     }
 
     public void insertIntoAssortment(IProduct product) throws SQLException {
@@ -40,9 +39,16 @@ public class dbAccess {
         statement.setFloat(7, product.getSellPrice());
         statement.setFloat(8, product.getSellPriceWholeSeller());
         statement.setFloat(9, product.getRetailersPrice());
+        statement.executeUpdate();
     }
 
-    public void listAssortment() {
-
+    public void searchAssortment(long id) throws SQLException {
+        PreparedStatement statement;
+        statement = conn.prepareStatement("SELECT code,name,merka,val,zavo_pr,buy_price,sell_price,sellpredro,sellprod FROM ASSORTMENT WHERE CODE LIKE ?");
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            
+        }
     }
 }

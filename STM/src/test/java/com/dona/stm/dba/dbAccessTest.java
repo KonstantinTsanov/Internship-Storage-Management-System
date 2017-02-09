@@ -42,13 +42,13 @@ public class dbAccessTest {
     /**
      * Test of insertIntoAssortment method, of class dbAccess.
      */
-//    @Test
-//    public void testInsertIntoAssortment() throws Exception {
-//        System.out.println("insertIntoAssortment");
-//        IProduct product = new Factory().createProduct(1000000, "bla", "m", "Dollar", 40, "5", "10", "15", "20");
-//        dbAccess instance = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
-//        instance.insertIntoAssortment(product);
-//    }
+    @Test
+    public void testInsertIntoAssortment() throws Exception {
+        System.out.println("insertIntoAssortment");
+        IProduct product = new Factory().createProduct("1000000", "bla", "m", "Dollar", "40", "5", "10", "15", "20");
+        dbAccess instance = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
+        instance.insertIntoAssortment(product);
+    }
 
     /**
      * Test of listAssortment method, of class dbAccess.
