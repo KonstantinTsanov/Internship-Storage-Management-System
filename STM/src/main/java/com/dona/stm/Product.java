@@ -21,7 +21,7 @@ public class Product implements IProduct {
 
     private float buyPrice;
     private float sellPrice;
-    private float sellPriceWholeSaler;
+    private float sellPriceWholeSeller;
     private float retailersPrice;
 
     public Product(String id, String name, String measure, String currency, String discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
@@ -33,7 +33,7 @@ public class Product implements IProduct {
 
         setBuyPrice(Float.valueOf(buyPrice));
         setSellPrice(Float.valueOf(sellPrice));
-        setSellPriceWholeSaler(Float.valueOf(sellPriceWholeSaler));
+        setSellPriceWholeSeller(Float.valueOf(sellPriceWholeSaler));
         setRetailersPrice(Float.valueOf(retailersPrice));
     }
 
@@ -93,12 +93,12 @@ public class Product implements IProduct {
         this.sellPrice = val;
     }
 
-    public float getSellPriceWholeSaler() {
-        return this.sellPriceWholeSaler;
+    public float getSellPriceWholeSeller() {
+        return this.sellPriceWholeSeller;
     }
 
-    private void setSellPriceWholeSaler(float val) {
-        this.sellPriceWholeSaler = val;
+    private void setSellPriceWholeSeller(float val) {
+        this.sellPriceWholeSeller = val;
     }
 
     public float getRetailersPrice() {

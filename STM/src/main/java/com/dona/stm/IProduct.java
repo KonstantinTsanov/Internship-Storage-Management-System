@@ -25,7 +25,7 @@ public interface IProduct {
     
     float getSellPrice();
     
-    float getSellPriceWholeSaler();
+    float getSellPriceWholeSeller();
     
     float getRetailersPrice();
 }
