@@ -11,9 +11,15 @@ package com.dona.stm;
  */
 public interface IProduct {
     
+    long getId();
+    
     String getName();
     
-    String getBrand();
+    String getMeasure();
+    
+    String getCurrency();
+    
+    float getDiscount();
     
     float getBuyPrice();
     

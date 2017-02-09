@@ -13,20 +13,36 @@ import java.math.BigDecimal;
  */
 public class Product implements IProduct {
 
+    private long id;
     private String name;
-    private String brand;
+    private String measure;
+    private String currency;
+    private float discount;
+
     private float buyPrice;
     private float sellPrice;
     private float sellPriceWholeSaler;
     private float retailersPrice;
 
-    public Product(String name, String brand, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
+    public Product(long id, String name, String measure, String currency, float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
+        setId(id);
         setName(name);
-        setBrand(brand);
+        setMeasure(measure);
+        setCurrency(currency);
+        setDiscount(discount);
+
         setBuyPrice(Float.valueOf(buyPrice));
         setSellPrice(Float.valueOf(sellPrice));
         setSellPriceWholeSaler(Float.valueOf(sellPriceWholeSaler));
         setRetailersPrice(Float.valueOf(retailersPrice));
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long val) {
+        this.id = val;
     }
 
     public String getName() {
@@ -37,12 +53,28 @@ public class Product implements IProduct {
         this.name = val;
     }
 
-    public String getBrand() {
-        return this.brand;
+    public String getMeasure() {
+        return this.measure;
     }
 
-    private void setBrand(String val) {
-        this.brand = val;
+    private void setMeasure(String val) {
+        this.measure = val;
+    }
+
+    public String getCurrency() {
+        return this.currency;
+    }
+
+    private void setCurrency(String val) {
+        this.currency = val;
+    }
+
+    public float getDiscount() {
+        return this.discount;
+    }
+    
+    private void setDiscount(float val) {
+        this.discount = val;
     }
 
     public float getBuyPrice() {

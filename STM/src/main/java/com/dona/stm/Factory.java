@@ -11,8 +11,8 @@ package com.dona.stm;
  */
 public class Factory {
     
-    public IProduct createProduct(String name, String brand, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice )
+    public IProduct createProduct(long id, String name, String measure, String currency, float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice )
     {
-        return new Product(name,brand,buyPrice,sellPrice,sellPriceWholeSaler,retailersPrice);
+        return new Product(id,name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
     }
 }
