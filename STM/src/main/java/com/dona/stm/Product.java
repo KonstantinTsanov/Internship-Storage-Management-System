@@ -24,12 +24,12 @@ public class Product implements IProduct {
     private float sellPriceWholeSaler;
     private float retailersPrice;
 
-    public Product(long id, String name, String measure, String currency, float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
-        setId(id);
+    public Product(String id, String name, String measure, String currency, String discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice) {
+        setId(Long.parseLong(id));
         setName(name);
         setMeasure(measure);
         setCurrency(currency);
-        setDiscount(discount);
+        setDiscount(Float.valueOf(discount));
 
         setBuyPrice(Float.valueOf(buyPrice));
         setSellPrice(Float.valueOf(sellPrice));
@@ -41,7 +41,7 @@ public class Product implements IProduct {
         return this.id;
     }
 
-    public void setId(long val) {
+    private void setId(long val) {
         this.id = val;
     }
 
