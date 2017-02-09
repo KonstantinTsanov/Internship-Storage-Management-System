@@ -6,6 +6,12 @@
 package com.dona.stm.gui;
 
 import com.dona.stm.Factory;
+import com.dona.stm.IProduct;
+import com.dona.stm.Product;
+import com.dona.stm.dba.dbAccess;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -224,21 +230,26 @@ public class AssortmentsAdding extends javax.swing.JPanel {
     }//GEN-LAST:event_tbIdActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        //long id, String name, String measure, String currency,
-        //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
-        String id = tbId.getText();
-        String name = tbName.getText();
-        String measure = tbMeasure.getText();
-        String currency = tbCurrency.getText();
-        String discount = tbDiscount.getText();
-        String buyPrice = tbBuyPrice.getText();
-        String sellPrice = tbSellPrice.getText();
-        String sellPriceWholeSaler = tbSellPriceWholeSaler.getText();
-        String retailersPrice = tbPrice.getText();
-        
-        Factory fa = new Factory();
-        fa.createProduct(id,name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
-        //insertIntoAssortment(fa);
+        try {
+            //long id, String name, String measure, String currency,
+            //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
+            String id = tbId.getText();
+            String name = tbName.getText();
+            String measure = tbMeasure.getText();
+            String currency = tbCurrency.getText();
+            String discount = tbDiscount.getText();
+            String buyPrice = tbBuyPrice.getText();
+            String sellPrice = tbSellPrice.getText();
+            String sellPriceWholeSaler = tbSellPriceWholeSaler.getText();
+            String retailersPrice = tbPrice.getText();
+            
+            Factory fa = new Factory();
+            IProduct  prod = fa.createProduct(id,name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
+            dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
+            db.insertIntoAssortment(prod);
+        } catch (SQLException ex) {
+            Logger.getLogger(AssortmentsAdding.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void tbSellPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbSellPriceActionPerformed
