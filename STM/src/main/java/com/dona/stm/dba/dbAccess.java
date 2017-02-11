@@ -5,6 +5,7 @@
  */
 package com.dona.stm.dba;
 
+import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,13 +43,16 @@ public class dbAccess {
         statement.executeUpdate();
     }
 
-    public void searchAssortment(long id) throws SQLException {
-        PreparedStatement statement;
-        statement = conn.prepareStatement("SELECT code,name,merka,val,zavo_pr,buy_price,sell_price,sellpredro,sellprod FROM ASSORTMENT WHERE CODE LIKE ?");
-        statement.setLong(1, id);
-        ResultSet rs = statement.executeQuery();
-        while (rs.next()) {
-            
-        }
-    }
+//    public IProduct searchAssortment(long id) throws SQLException {
+//        PreparedStatement statement;
+//        statement = conn.prepareStatement("SELECT code,name,merka,val,zavo_pr,buy_price,sell_price,sellpredro,sellprod FROM ASSORTMENT WHERE CODE LIKE ?");
+//        statement.setLong(1, id);
+//        ResultSet rs = statement.executeQuery();
+//        while (rs.next()) {
+//            IProduct product = new Factory().createProduct(rs.getString("code"), 
+//                    rs.getString("name"), rs.getString("measure"), rs.getString("currency"), 
+//                    rs.getString("discount"), rs.getString("buyPrice"), rs.getString("sellPrice"),
+//                    rs.getString("sellPriceWholeSaler"), rs.getString("retailersPrice"));
+//        }
+//    }
 }
