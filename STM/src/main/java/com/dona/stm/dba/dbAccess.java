@@ -7,11 +7,14 @@ package com.dona.stm.dba;
 
 import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
+import com.dona.stm.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.java.Log;
 
 /**
@@ -43,16 +46,19 @@ public class dbAccess {
         statement.executeUpdate();
     }
 
-//    public IProduct searchAssortment(long id) throws SQLException {
-//        PreparedStatement statement;
-//        statement = conn.prepareStatement("SELECT code,name,merka,val,zavo_pr,buy_price,sell_price,sellpredro,sellprod FROM ASSORTMENT WHERE CODE LIKE ?");
-//        statement.setLong(1, id);
-//        ResultSet rs = statement.executeQuery();
-//        while (rs.next()) {
-//            IProduct product = new Factory().createProduct(rs.getString("code"), 
-//                    rs.getString("name"), rs.getString("measure"), rs.getString("currency"), 
-//                    rs.getString("discount"), rs.getString("buyPrice"), rs.getString("sellPrice"),
-//                    rs.getString("sellPriceWholeSaler"), rs.getString("retailersPrice"));
-//        }
-//    }
+    public List<IProduct> searchAssortment(String id) throws SQLException {
+        PreparedStatement statement;
+        statement = conn.prepareStatement("SELECT code,name,merka,val,zavo_pr,buy_price,sell_price,sellpredro,sellprod FROM ASSORTMENT WHERE CODE LIKE ?");
+        statement.setString(1, id);
+        ResultSet rs = statement.executeQuery();
+        List<IProduct> list = new ArrayList<>();
+        while (rs.next()) {
+            IProduct product = new Factory().createProduct(rs.getString("code"),
+                    rs.getString("name"), rs.getString("merka"), rs.getString("val"),
+                    rs.getString("zavo_pr"), rs.getString("buy_price"), rs.getString("sell_price"),
+                    rs.getString("sellpredro"), rs.getString("sellprod"));
+            list.add(product);
+        }
+        return list;
+    }
 }

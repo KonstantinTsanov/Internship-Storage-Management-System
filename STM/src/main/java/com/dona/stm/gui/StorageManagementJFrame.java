@@ -5,17 +5,44 @@
  */
 package com.dona.stm.gui;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import lombok.Getter;
+
 /**
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class StorageManagementJFrame extends javax.swing.JFrame implements CardLayoutCallback {
+
+    private JPanel cardJPanel;
+    private ContractorsJPanel contractorsAddingJPanel;
+    private AddProductsJPanel assortmentsAddingJPanel;
+    private final CardLayout cardLayout = new CardLayout();
+    private MenuJPanel optionsJPanel;
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
-        initComponents();
+    public StorageManagementJFrame() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        optionsJPanel = new MenuJPanel(this);
+        cardJPanel = new JPanel();
+        contractorsAddingJPanel = new ContractorsJPanel();
+        assortmentsAddingJPanel = new AddProductsJPanel();
+        cardJPanel.setLayout(cardLayout);
+        cardJPanel.add(assortmentsAddingJPanel, CLJPanelName.Assortment.toString());
+        cardJPanel.add(contractorsAddingJPanel, CLJPanelName.Contractors.toString());
+        add(optionsJPanel, BorderLayout.WEST);
+        add(cardJPanel, BorderLayout.EAST);
+        pack();
     }
 
     /**
@@ -27,23 +54,17 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        assortmentsAdding1 = new com.dona.stm.gui.AssortmentsAdding();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(assortmentsAdding1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 530, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(assortmentsAdding1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+            .addGap(0, 326, Short.MAX_VALUE)
         );
 
         pack();
@@ -66,25 +87,36 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                StorageManagementJFrame frame = new StorageManagementJFrame();
+                frame.setVisible(true);
             }
         });
     }
-    
+
+    @Override
+    public JPanel getCardJPanel() {
+        return cardJPanel;
+    }
+
+    @Override
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.dona.stm.gui.AssortmentsAdding assortmentsAdding1;
     // End of variables declaration//GEN-END:variables
 }

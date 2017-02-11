@@ -5,17 +5,21 @@
  */
 package com.dona.stm.gui;
 
+import java.awt.GridBagLayout;
+import javax.swing.BoxLayout;
+
 /**
  *
- * @author Cveti
+ * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
-public class Contractors extends javax.swing.JPanel {
+public class AddProductsJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form Contractors
+     * Creates new form AddProductsJPanel
      */
-    public Contractors() {
+    public AddProductsJPanel() {
         initComponents();
+        setLayout(new GridBagLayout());
     }
 
     /**
@@ -27,30 +31,19 @@ public class Contractors extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("Contractors");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(333, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

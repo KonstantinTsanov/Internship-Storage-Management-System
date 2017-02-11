@@ -7,6 +7,7 @@ package com.dona.stm.dba;
 
 import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,22 +20,22 @@ import static org.junit.Assert.*;
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class dbAccessTest {
-    
+
     public dbAccessTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,6 +49,12 @@ public class dbAccessTest {
         IProduct product = new Factory().createProduct("1000000", "bla", "m", "Dollar", "40", "5", "10", "15", "20");
         dbAccess instance = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
         instance.insertIntoAssortment(product);
+        List<IProduct> list = instance.searchAssortment("1000000");
+        for (IProduct prod : list) {
+            System.out.println(prod.getId());
+            System.out.println(prod.getBuyPrice());
+            System.out.println(prod.getSellPrice());
+        }
     }
 
     /**
@@ -56,5 +63,5 @@ public class dbAccessTest {
     @Test
     public void testListAssortment() {
     }
-    
+
 }
