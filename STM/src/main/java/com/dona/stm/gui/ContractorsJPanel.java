@@ -7,6 +7,7 @@ package com.dona.stm.gui;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -55,6 +56,8 @@ public class ContractorsJPanel extends JPanel {
 
     private JLabel phoneNumberLabel;
     private JTextField phoneNumberTextField;
+    
+    private JButton addContractorButton;
 
     public ContractorsJPanel() {
         setLayout(new MigLayout());
@@ -103,6 +106,8 @@ public class ContractorsJPanel extends JPanel {
 
         phoneNumberLabel = new JLabel();
         phoneNumberTextField = new JTextField();
+        
+        addContractorButton = new JButton();
     }
 
     private void AddComponents() {
@@ -142,6 +147,8 @@ public class ContractorsJPanel extends JPanel {
         
         add(phoneNumberLabel);
         add(phoneNumberTextField, "width 60:80:100, wrap");
+        
+        add(addContractorButton, "width 40:60:80, wrap");
     }
 
     public void SetComponentText(String language, String country) {
@@ -160,5 +167,6 @@ public class ContractorsJPanel extends JPanel {
         taxRegistryNumberLabel.setText(r.getString("ContractorsJPanel.taxRegistryNumberLabel.text"));
         VATregistrationLabel.setText(r.getString("ContractorsJPanel.VATregistrationLabel.text"));
         phoneNumberLabel.setText(r.getString("ContractorsJPanel.phoneNumberLabel.text"));
+        addContractorButton.setText(r.getString("ContractorsJPanel.addContractorButton.text"));
     }
 }
