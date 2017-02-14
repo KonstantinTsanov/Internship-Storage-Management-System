@@ -8,6 +8,11 @@ package com.dona.stm.gui;
 import static com.dona.stm.gui.CLJPanelName.Contractors;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +22,7 @@ import javax.swing.JPanel;
 public class StorageManagementJFrame extends javax.swing.JFrame implements CardLayoutCallback {
 
     private JPanel cardJPanel;
-    private ContractorsJPanel contractors;
+    private ContractorsJPanel contractorsJPanel;
     private AddProductJPanel assortmentsAddingJPanel;
     private final CardLayout cardLayout = new CardLayout();
     private MenuJPanel optionsJPanel;
@@ -27,16 +32,52 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
      */
     public StorageManagementJFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        createMenuBar();
         optionsJPanel = new MenuJPanel(this);
         cardJPanel = new JPanel();
-        contractors = new ContractorsJPanel();
+        contractorsJPanel = new ContractorsJPanel();
         assortmentsAddingJPanel = new AddProductJPanel();
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CLJPanelName.Assortment.toString());
-        cardJPanel.add(contractors, CLJPanelName.Contractors.toString());
+        cardJPanel.add(contractorsJPanel, CLJPanelName.Contractors.toString());
         add(optionsJPanel, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
         pack();
+    }
+
+    private void setLanguage(String language, String country) {
+        assortmentsAddingJPanel.SetComponentText(language, country);
+    }
+
+    private void createMenuBar() {
+        JMenuBar menubar = new JMenuBar();
+        JMenu file = new JMenu("File");
+        file.setMnemonic(KeyEvent.VK_F);
+        JMenuItem eMenuItem = new JMenuItem("Exit");
+        eMenuItem.setMnemonic(KeyEvent.VK_E);
+        eMenuItem.setToolTipText("Exit application");
+        eMenuItem.addActionListener((ActionEvent event) -> {
+            System.exit(0);
+        });
+        file.add(eMenuItem);
+        menubar.add(file);
+
+        JMenu options = new JMenu("Options");
+        file.setMnemonic(KeyEvent.VK_O);
+        JMenu language = new JMenu("Language");
+        JMenuItem english = new JMenuItem("English");
+        english.addActionListener((ActionEvent event) -> {
+            setLanguage("en", "US");
+        });
+        JMenuItem bulgarian = new JMenuItem("Български");
+        bulgarian.addActionListener((ActionEvent event) -> {
+            setLanguage("bg", "BG");
+        });
+        language.add(english);
+        language.add(bulgarian);
+        options.add(language);
+        menubar.add(options);
+        setJMenuBar(menubar);
     }
 
     /**

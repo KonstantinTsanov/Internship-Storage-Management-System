@@ -44,12 +44,10 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JButton addToDBJButton;
 
     public AddProductJPanel() {
-        setLayout(new MigLayout());
+        setLayout(new MigLayout("", "100!", "40!"));
         InitializeComponents();
         AddComponents();
-
-        SetComponentText("bg", "BG");
-        //SetComponentText("en", "US");
+        SetComponentText("en", "US");
     }
 
     private void InitializeComponents() {
@@ -128,7 +126,6 @@ public class AddProductJPanel extends javax.swing.JPanel {
         priceLabel.setText(r.getString("AddProductJPanel.priceLabel.text"));
         measureLabel.setText(r.getString("AddProductJPanel.measureLabel.text"));
         addToDBJButton.setText(r.getString("AddProductJPanel.addToDBJButton.text"));
-        //validate, repaint??????
 
     }
 }
