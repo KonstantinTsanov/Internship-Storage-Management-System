@@ -27,7 +27,7 @@ public class ContractorsJPanel extends JPanel {
     private JTextField nameTextField;
 
     private JLabel addressLabel;
-    private JTextField adressTextField;
+    private JTextField addressTextField;
 
     private JLabel apLabel; //accountable person = mol
     private JTextField apTextField;
@@ -75,7 +75,7 @@ public class ContractorsJPanel extends JPanel {
         nameTextField = new JTextField();
 
         addressLabel = new JLabel();
-        adressTextField = new JTextField();
+        addressTextField = new JTextField();
 
         apLabel = new JLabel();
         apTextField = new JTextField();
@@ -107,13 +107,58 @@ public class ContractorsJPanel extends JPanel {
 
     private void AddComponents() {
         add(mainLabel, "span");
-        
+        add(bulstatLabel);
+        add(bulstatTextFuild, "width 60:80:100, wrap");
 
+        add(nameLabel);
+        add(nameTextField, "width 60:80:100, wrap");
+
+        add(addressLabel);
+        add(addressTextField, "width 60:80:100, wrap");
+
+        add(apLabel);
+        add(apTextField, "width 60:80:100, wrap");
+
+        add(receiverGoodsLabel);
+        add(receiverGoodsTextField, "width 60:80:100, wrap");
+        
+        add(faxLabel);
+        add(faxTextField, "width 60:80:100, wrap");
+        
+        add(bankLabel);
+        add(bankTextField, "width 60:80:100, wrap");
+        
+        add(bankCodeLabel);
+        add(bankCodeTextField, "width 60:80:100, wrap");
+        
+        add(IBANLabel);
+        add(IBANTextField, "width 60:80:100, wrap");
+        
+        add(taxRegistryNumberLabel);
+        add(taxRegistryNumberTextField, "width 60:80:100, wrap");
+        
+        add(VATregistrationLabel);
+        add(VATregistrationTextField, "width 60:80:100, wrap");
+        
+        add(phoneNumberLabel);
+        add(phoneNumberTextField, "width 60:80:100, wrap");
     }
 
     public void SetComponentText(String language, String country) {
         Locale locale = new Locale(language, country);
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("ContractorsJPanel.mainLabel.text"));
+        bulstatLabel.setText(r.getString("ContractorsJPanel.bulstatLabel.text"));
+        nameLabel.setText(r.getString("ContractorsJPanel.nameLabel.text"));
+        addressLabel.setText(r.getString("ContractorsJPanel.addressLabel.text"));
+        apLabel.setText(r.getString("ContractorsJPanel.apLabel.text"));
+        receiverGoodsLabel.setText(r.getString("ContractorsJPanel.receiverGoodsLabel.text"));
+        faxLabel.setText(r.getString("ContractorsJPanel.faxLabel.text"));
+        bankLabel.setText(r.getString("ContractorsJPanel.bankLabel.text"));
+        bankCodeLabel.setText(r.getString("ContractorsJPanel.bankCodeLabel.text"));
+        IBANLabel.setText(r.getString("ContractorsJPanel.IBANLabel.text"));
+        taxRegistryNumberLabel.setText(r.getString("ContractorsJPanel.taxRegistryNumberLabel.text"));
+        VATregistrationLabel.setText(r.getString("ContractorsJPanel.VATregistrationLabel.text"));
+        phoneNumberLabel.setText(r.getString("ContractorsJPanel.phoneNumberLabel.text"));
     }
 }
