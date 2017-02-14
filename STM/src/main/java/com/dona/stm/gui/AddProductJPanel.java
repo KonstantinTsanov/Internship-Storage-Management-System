@@ -98,7 +98,6 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(codeTf, "width 60:80:100, gapright 20");
         add(nameLabel);
         add(nameJSPane, "width 80:100:120, height 60:80:100, wrap");
-
     }
 
     public void SetComponentText(String language, String country) {
