@@ -56,7 +56,9 @@ public class AddProductJPanel extends javax.swing.JPanel {
         InitializeComponents();
         AddComponents();
 
-        SetComponentText("bg", "BG");
+        
+        //SetComponentText("bg", "BG");
+        SetComponentText("en", "US");
     }
 
     private void InitializeComponents() {

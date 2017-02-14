@@ -5,6 +5,7 @@
  */
 package com.dona.stm.gui;
 
+import static com.dona.stm.gui.CLJPanelName.Contractors;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -16,7 +17,7 @@ import javax.swing.JPanel;
 public class StorageManagementJFrame extends javax.swing.JFrame implements CardLayoutCallback {
 
     private JPanel cardJPanel;
-    private ContractorsJPanel contractorsAddingJPanel;
+    private ContractorsJPanel contractors;
     private AddProductJPanel assortmentsAddingJPanel;
     private final CardLayout cardLayout = new CardLayout();
     private MenuJPanel optionsJPanel;
@@ -28,11 +29,11 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         optionsJPanel = new MenuJPanel(this);
         cardJPanel = new JPanel();
-        contractorsAddingJPanel = new ContractorsJPanel();
+        contractors = new ContractorsJPanel();
         assortmentsAddingJPanel = new AddProductJPanel();
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CLJPanelName.Assortment.toString());
-        cardJPanel.add(contractorsAddingJPanel, CLJPanelName.Contractors.toString());
+        cardJPanel.add(contractors, CLJPanelName.Contractors.toString());
         add(optionsJPanel, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
         pack();
