@@ -17,8 +17,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.DefaultCaret;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -47,6 +49,8 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JLabel measureLabel;
     private JTextField measureTf;
 
+    private JScrollPane nameJSPane;
+
     public AddProductJPanel() {
         setLayout(new MigLayout());
         InitializeComponents();
@@ -57,38 +61,60 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     private void InitializeComponents() {
         mainLabel = new JLabel();
+
         codeLabel = new JLabel();
-        nameLabel = new JLabel();
-        currencyLabel = new JLabel();
-        discountLabel = new JLabel();
-        buyPriceLabel = new JLabel();
-        sellPriceLabel = new JLabel();
-        wholesalePriceLabel = new JLabel();
-        priceLabel = new JLabel();
-        measureLabel = new JLabel();
         codeTf = new JTextField();
+
+        nameLabel = new JLabel();
         nameTa = new JTextArea();
+        nameTa.setLineWrap(true);
+        nameJSPane = new JScrollPane(nameTa);
+
+        currencyLabel = new JLabel();
         currencyTf = new JTextField();
+
+        discountLabel = new JLabel();
         discountTf = new JTextField();
+
+        buyPriceLabel = new JLabel();
         buyPriceTf = new JTextField();
+
+        sellPriceLabel = new JLabel();
         sellPriceTf = new JTextField();
+
+        wholesalePriceLabel = new JLabel();
         wholeSalePriceTf = new JTextField();
+
+        priceLabel = new JLabel();
         priceTf = new JTextField();
+
+        measureLabel = new JLabel();
         measureTf = new JTextField();
     }
 
     private void AddComponents() {
-        add(mainLabel, "wrap");
+        add(mainLabel, "span");
+        add(codeLabel);
+        add(codeTf, "width 60:80:100, gapright 20");
+        add(nameLabel);
+        add(nameJSPane, "width 80:100:120, height 60:80:100, wrap");
+
     }
 
     public void SetComponentText(String language, String country) {
-        Locale locale = new Locale(language);
+        Locale locale = new Locale(language, country);
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
-        mainLabel.setText(country);
-//        codeLabel nameLabel
-//        currencyLabel discountLabel
-//        buyPriceLabel sellPriceLabel
-//        wholesalePriceLabel priceLabel 
-//        measureLabel 
+        mainLabel.setText(r.getString("AddProductJPanel.mainLabel.text"));
+        codeLabel.setText(r.getString("AddProductJPanel.codeLabel.text"));
+        nameLabel.setText(r.getString("AddProductJPanel.nameLabel.text"));
+        currencyLabel.setText(r.getString("AddProductJPanel.currencyLabel.text"));
+        discountLabel.setText(r.getString("AddProductJPanel.discountLabel.text"));
+        buyPriceLabel.setText(r.getString("AddProductJPanel.buyPriceLabel.text"));
+        sellPriceLabel.setText(r.getString("AddProductJPanel.sellPriceLabel.text"));
+        wholesalePriceLabel.setText(r.getString("AddProductJPanel.wholesalePriceLabel.text"));
+        priceLabel.setText(r.getString("AddProductJPanel.priceLabel.text"));
+        measureLabel.setText(r.getString("AddProductJPanel.measureLabel.text"));
+        //validate, repaint??????
+
     }
 }
