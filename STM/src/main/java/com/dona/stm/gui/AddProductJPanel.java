@@ -5,23 +5,13 @@
  */
 package com.dona.stm.gui;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.DefaultCaret;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -58,8 +48,8 @@ public class AddProductJPanel extends javax.swing.JPanel {
         InitializeComponents();
         AddComponents();
 
-        //SetComponentText("bg", "BG");
-        SetComponentText("en", "US");
+        SetComponentText("bg", "BG");
+        //SetComponentText("en", "US");
     }
 
     private void InitializeComponents() {
@@ -99,7 +89,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private void AddComponents() {
         add(mainLabel, "span");
         add(codeLabel);
-        add(codeTf, "width 60:80:100, gapright 20");
+        add(codeTf, "width 60:80:100");
         add(nameLabel);
         add(nameJSPane, "width 80:100:120, height 60:80:100, wrap");
         add(mainLabel, "span");
@@ -137,6 +127,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
         wholesalePriceLabel.setText(r.getString("AddProductJPanel.wholesalePriceLabel.text"));
         priceLabel.setText(r.getString("AddProductJPanel.priceLabel.text"));
         measureLabel.setText(r.getString("AddProductJPanel.measureLabel.text"));
+        addToDBJButton.setText(r.getString("AddProductJPanel.addToDBJButton.text"));
         //validate, repaint??????
 
     }
