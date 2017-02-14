@@ -83,9 +83,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     public void SetComponentText(String language, String country) {
         Locale locale = new Locale(language);
-//       
-        ResourceBundle r = ResourceBundle.getBundle("src.main.resources.DriverSearch", new Locale("bg", "BG"));
-        System.out.print(r.getString("dll.0"));
+        ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(country);
 //        codeLabel nameLabel
 //        currencyLabel discountLabel
