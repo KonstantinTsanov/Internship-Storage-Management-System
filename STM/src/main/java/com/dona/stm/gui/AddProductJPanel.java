@@ -16,6 +16,7 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -50,13 +51,13 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JTextField measureTf;
 
     private JScrollPane nameJSPane;
+    private JButton addToDBJButton;
 
     public AddProductJPanel() {
         setLayout(new MigLayout());
         InitializeComponents();
         AddComponents();
 
-        
         //SetComponentText("bg", "BG");
         SetComponentText("en", "US");
     }
@@ -92,6 +93,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
         measureLabel = new JLabel();
         measureTf = new JTextField();
+        addToDBJButton = new JButton();
     }
 
     private void AddComponents() {
@@ -100,6 +102,26 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(codeTf, "width 60:80:100, gapright 20");
         add(nameLabel);
         add(nameJSPane, "width 80:100:120, height 60:80:100, wrap");
+        add(mainLabel, "span");
+        add(codeLabel);
+        add(codeTf, "width 60:80:100");
+        add(nameLabel);
+        add(nameJSPane, "width 80:120:140, height 50:70:90, span 1 2, wrap");
+        add(currencyLabel);
+        add(currencyTf, "width 60:80:100, wrap");
+        add(discountLabel);
+        add(discountTf, "width 60:80:100");
+        add(buyPriceLabel);
+        add(buyPriceTf, "width 60:80:100, wrap");
+        add(sellPriceLabel);
+        add(sellPriceTf, "width 60:80:100");
+        add(wholesalePriceLabel);
+        add(wholeSalePriceTf, "width 60:80:100, wrap");
+        add(priceLabel);
+        add(priceTf, "width 60:80:100");
+        add(measureLabel);
+        add(measureTf, "width 60:80:100, wrap");
+        add(addToDBJButton, "span, align center center");
     }
 
     public void SetComponentText(String language, String country) {
