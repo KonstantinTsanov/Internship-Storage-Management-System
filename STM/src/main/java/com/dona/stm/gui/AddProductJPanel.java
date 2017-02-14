@@ -5,8 +5,14 @@
  */
 package com.dona.stm.gui;
 
+import com.dona.stm.Factory;
+import com.dona.stm.IProduct;
+import com.dona.stm.dba.dbAccess;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -128,4 +134,29 @@ public class AddProductJPanel extends javax.swing.JPanel {
         addToDBJButton.setText(r.getString("AddProductJPanel.addToDBJButton.text"));
 
     }
+
+//    private void addToDBJButtonActionPerformed(java.awt.event.ActionEvent evt) {
+//
+//        try {
+//             //long id, String name, String measure, String currency,
+//                     //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
+//                   
+//             //TODO: Add id label TextField
+//            // String id = tbId.getText();
+//            String name = nameTa.getText();
+//            String measure = measureTf.getText();
+//            String currency = currencyTf.getText();
+//            String discount = discountTf.getText();
+//            String buyPrice = buyPriceTf.getText();
+//            String sellPrice = sellPriceTf.getText();
+//            String sellPriceWholeSaler = wholeSalePriceTf.getText();
+//            String retailersPrice = priceTf.getText();
+//             Factory fa = new Factory();
+//            IProduct  prod = fa.createProduct(id, name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
+//            dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
+//            db.insertIntoAssortment(prod);
+//                    } catch (SQLException ex) {
+//            Logger.getLogger(AssortmentsAdding.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//    }
 }
