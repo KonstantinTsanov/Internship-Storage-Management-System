@@ -45,16 +45,16 @@ public class dbAccessTest {
      */
     @Test
     public void testInsertIntoAssortment() throws Exception {
-        System.out.println("insertIntoAssortment");
-        IProduct product = new Factory().createProduct("1000000", "bla", "m", "Dollar", "40", "5", "10", "15", "20");
-        dbAccess instance = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
-        instance.insertIntoAssortment(product);
-        List<IProduct> list = instance.searchAssortment("1000000");
-        for (IProduct prod : list) {
-            System.out.println(prod.getId());
-            System.out.println(prod.getBuyPrice());
-            System.out.println(prod.getSellPrice());
-        }
+//        System.out.println("insertIntoAssortment");
+//        IProduct product = new Factory().createProduct("1000000", "bla", "m", "Dollar", "40", "5", "10", "15", "20");
+//        dbAccess instance = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
+//        instance.insertIntoAssortment(product);
+//        List<IProduct> list = instance.searchAssortment("1000000");
+//        for (IProduct prod : list) {
+//            System.out.println(prod.getId());
+//            System.out.println(prod.getBuyPrice());
+//            System.out.println(prod.getSellPrice());
+//        }
     }
 
     /**

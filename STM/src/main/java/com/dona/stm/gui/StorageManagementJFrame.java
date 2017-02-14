@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +25,7 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
 
     private JPanel cardJPanel;
     private ContractorsJPanel contractorsAddingJPanel;
-    private AddProductsJPanel assortmentsAddingJPanel;
+    private AddProductJPanel assortmentsAddingJPanel;
     private final CardLayout cardLayout = new CardLayout();
     private MenuJPanel optionsJPanel;
 
@@ -36,7 +37,7 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
         optionsJPanel = new MenuJPanel(this);
         cardJPanel = new JPanel();
         contractorsAddingJPanel = new ContractorsJPanel();
-        assortmentsAddingJPanel = new AddProductsJPanel();
+        assortmentsAddingJPanel = new AddProductJPanel();
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CLJPanelName.Assortment.toString());
         cardJPanel.add(contractorsAddingJPanel, CLJPanelName.Contractors.toString());
@@ -54,17 +55,28 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/dona/stm/gui/Bundle"); // NOI18N
+        jLabel1.setText(bundle.getString("StorageManagementJFrame.jLabel1.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel1)
+                .addContainerGap(370, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel1)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,5 +130,6 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
