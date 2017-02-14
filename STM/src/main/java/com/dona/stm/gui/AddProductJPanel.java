@@ -18,12 +18,14 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import lombok.extern.java.Log;
 import net.miginfocom.swing.MigLayout;
 
 /**
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
+@Log
 public class AddProductJPanel extends javax.swing.JPanel {
 
     private JLabel mainLabel;
@@ -135,28 +137,27 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     }
 
-//    private void addToDBJButtonActionPerformed(java.awt.event.ActionEvent evt) {
-//
-//        try {
-//             //long id, String name, String measure, String currency,
-//                     //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
-//                   
-//             //TODO: Add id label TextField
-//            // String id = tbId.getText();
-//            String name = nameTa.getText();
-//            String measure = measureTf.getText();
-//            String currency = currencyTf.getText();
-//            String discount = discountTf.getText();
-//            String buyPrice = buyPriceTf.getText();
-//            String sellPrice = sellPriceTf.getText();
-//            String sellPriceWholeSaler = wholeSalePriceTf.getText();
-//            String retailersPrice = priceTf.getText();
-//             Factory fa = new Factory();
-//            IProduct  prod = fa.createProduct(id, name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
-//            dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
-//            db.insertIntoAssortment(prod);
-//                    } catch (SQLException ex) {
-//            Logger.getLogger(AssortmentsAdding.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//    }
+    private void addToDBJButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+        try {
+             //long id, String name, String measure, String currency,
+                     //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
+                            
+            String id = codeTf.getText();
+            String name = nameTa.getText();
+            String measure = measureTf.getText();
+            String currency = currencyTf.getText();
+            String discount = discountTf.getText();
+            String buyPrice = buyPriceTf.getText();
+            String sellPrice = sellPriceTf.getText();
+            String sellPriceWholeSaler = wholeSalePriceTf.getText();
+            String retailersPrice = priceTf.getText();
+             Factory fa = new Factory();
+            IProduct  prod = fa.createProduct(id, name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
+            dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
+            db.insertIntoAssortment(prod);
+                    } catch (SQLException ex) {
+            log.log(Level.SEVERE, null, ex);
+                    }
+    }
 }

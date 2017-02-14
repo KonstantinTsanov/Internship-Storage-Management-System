@@ -47,6 +47,7 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
 
     private void setLanguage(String language, String country) {
         assortmentsAddingJPanel.SetComponentText(language, country);
+        contractorsJPanel.SetComponentText(language, country);
     }
 
     private void createMenuBar() {
