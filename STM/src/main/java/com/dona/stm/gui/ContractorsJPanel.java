@@ -65,7 +65,6 @@ public class ContractorsJPanel extends JPanel {
         setLayout(new MigLayout("", "100!", "35!"));
         initializeComponents();
         addComponents();
-        setComponentText(new Locale("en", "US"));
     }
 
     private void initializeComponents() {
@@ -146,9 +145,9 @@ public class ContractorsJPanel extends JPanel {
         add(VATregistrationTextField, "width 60:80:100");
 
         add(phoneNumberLabel);
-        add(phoneNumberTextField, "width 60:80:100, wrap");
+        add(phoneNumberTextField, "width 60:80:100, span");
 
-        add(addContractorButton, "dock south");
+        add(addContractorButton, "width 100:150:200, span, align center center");
     }
 
     public void setComponentText(Locale locale) {

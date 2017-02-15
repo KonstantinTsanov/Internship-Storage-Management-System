@@ -36,8 +36,6 @@ public class MenuJPanel extends javax.swing.JPanel {
         setLayout(new MigLayout());
         initializeComponents();
         addComponents();
-        setComponentText(new Locale("en", "US"));
-
     }
 
     private void initializeComponents() {

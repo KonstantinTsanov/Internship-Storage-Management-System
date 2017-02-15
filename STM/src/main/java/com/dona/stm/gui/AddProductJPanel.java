@@ -60,7 +60,6 @@ public class AddProductJPanel extends javax.swing.JPanel {
         setLayout(layout);
         InitializeComponents();
         AddComponents();
-        SetComponentText(new Locale("en", "US"));
     }
 
     private void InitializeComponents() {
@@ -120,7 +119,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(addToDBJButton, "width 100:150:200, span, align center center");
     }
 
-    public void SetComponentText(Locale locale) {
+    public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("AddProductJPanel.mainLabel.text"));
         codeLabel.setText(r.getString("AddProductJPanel.codeLabel.text"));
