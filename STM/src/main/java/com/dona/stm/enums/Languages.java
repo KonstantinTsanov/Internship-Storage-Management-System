@@ -5,16 +5,38 @@
  */
 package com.dona.stm.enums;
 
+import java.util.Locale;
+import lombok.Getter;
+
 /**
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public enum Languages {
-    English("English"),
-    Bulgarian("Български");
+    English("English", "en", "US") {
+        @Override
+        public Locale getLocale() {
+            return new Locale(getShortLanguage(), getShortCountry());
+        }
+    },
+    Bulgarian("Български", "bg", "BG") {
+        @Override
+        public Locale getLocale() {
+            return new Locale(getShortLanguage(), getShortCountry());
+        }
+    };
+    @Getter
     private final String name;
+    @Getter
+    private final String shortLanguage;
+    @Getter
+    private final String shortCountry;
 
-    private Languages(String s) {
-        name = s;
+    private Languages(String name, String shortLanguage, String shortCountry) {
+        this.name = name;
+        this.shortLanguage = shortLanguage;
+        this.shortCountry = shortCountry;
     }
+
+    public abstract Locale getLocale();
 }

@@ -56,11 +56,11 @@ public class ContractorsJPanel extends JPanel {
 
     private JLabel phoneNumberLabel;
     private JTextField phoneNumberTextField;
-    
+
     private JButton addContractorButton;
 
     public ContractorsJPanel() {
-        setLayout(new MigLayout());
+        setLayout(new MigLayout("", "100!", "40!"));
         InitializeComponents();
         AddComponents();
 
@@ -106,14 +106,14 @@ public class ContractorsJPanel extends JPanel {
 
         phoneNumberLabel = new JLabel();
         phoneNumberTextField = new JTextField();
-        
+
         addContractorButton = new JButton();
     }
 
     private void AddComponents() {
         add(mainLabel, "span");
         add(bulstatLabel);
-        add(bulstatTextFuild, "width 60:80:100, wrap");
+        add(bulstatTextFuild, "width 60:80:100");
 
         add(nameLabel);
         add(nameTextField, "width 60:80:100, wrap");
@@ -126,28 +126,28 @@ public class ContractorsJPanel extends JPanel {
 
         add(receiverGoodsLabel);
         add(receiverGoodsTextField, "width 60:80:100, wrap");
-        
+
         add(faxLabel);
         add(faxTextField, "width 60:80:100, wrap");
-        
+
         add(bankLabel);
         add(bankTextField, "width 60:80:100, wrap");
-        
+
         add(bankCodeLabel);
         add(bankCodeTextField, "width 60:80:100, wrap");
-        
+
         add(IBANLabel);
         add(IBANTextField, "width 60:80:100, wrap");
-        
+
         add(taxRegistryNumberLabel);
         add(taxRegistryNumberTextField, "width 60:80:100, wrap");
-        
+
         add(VATregistrationLabel);
         add(VATregistrationTextField, "width 60:80:100, wrap");
-        
+
         add(phoneNumberLabel);
         add(phoneNumberTextField, "width 60:80:100, wrap");
-        
+
         add(addContractorButton, "width 40:60:80, wrap");
     }
 

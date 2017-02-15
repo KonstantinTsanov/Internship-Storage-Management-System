@@ -5,6 +5,7 @@
  */
 package com.dona.stm.gui;
 
+import com.dona.stm.enums.CardLayoutJPanels;
 import javax.swing.JFrame;
 
 /**
@@ -86,11 +87,11 @@ public class MenuJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void assortmentsJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assortmentsJButton1ActionPerformed
-        frame.getCardLayout().show(frame.getCardJPanel(), CLJPanelName.Assortment.toString());
+        frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Assortment.toString());
     }//GEN-LAST:event_assortmentsJButton1ActionPerformed
 
     private void contractorsJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contractorsJButton1ActionPerformed
-        frame.getCardLayout().show(frame.getCardJPanel(), CLJPanelName.Contractors.toString());
+        frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Contractors.toString());
     }//GEN-LAST:event_contractorsJButton1ActionPerformed
 
 

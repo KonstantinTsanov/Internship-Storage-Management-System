@@ -8,6 +8,9 @@ package com.dona.stm.gui;
 import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
 import com.dona.stm.dba.dbAccess;
+import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -52,7 +55,10 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JButton addToDBJButton;
 
     public AddProductJPanel() {
-        setLayout(new MigLayout("", "100!", "40!"));
+        setPreferredSize(new Dimension(300, 350));
+        setMaximumSize(new Dimension(500, 500));
+        MigLayout layout = new MigLayout("", "[90!]", "[40!]");
+        setLayout(layout);
         InitializeComponents();
         AddComponents();
         SetComponentText("en", "US");
@@ -94,29 +100,24 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     private void AddComponents() {
         add(mainLabel, "span");
-        add(codeLabel);
-        add(codeTf, "width 60:80:100");
-        add(nameLabel);
-        add(nameJSPane, "width 80:100:120, height 60:80:100, wrap");
-        add(mainLabel, "span");
-        add(codeLabel);
-        add(codeTf, "width 60:80:100");
-        add(nameLabel);
-        add(nameJSPane, "width 80:120:140, height 50:70:90, span 1 2, wrap");
-        add(currencyLabel);
-        add(currencyTf, "width 60:80:100, wrap");
-        add(discountLabel);
-        add(discountTf, "width 60:80:100");
-        add(buyPriceLabel);
-        add(buyPriceTf, "width 60:80:100, wrap");
-        add(sellPriceLabel);
-        add(sellPriceTf, "width 60:80:100");
-        add(wholesalePriceLabel);
-        add(wholeSalePriceTf, "width 60:80:100, wrap");
-        add(priceLabel);
-        add(priceTf, "width 60:80:100");
-        add(measureLabel);
-        add(measureTf, "width 60:80:100, wrap");
+        add(codeLabel, "align right");
+        add(codeTf, "width 60:80:100,align right");
+        add(nameLabel, "align right");
+        add(nameJSPane, "width 80:100:120, height 50:70:90,align right, span 1 2, wrap");
+        add(currencyLabel, "align right");
+        add(currencyTf, "width 60:80:100,align right, wrap");
+        add(discountLabel, "align right");
+        add(discountTf, "width 60:80:100,align right");
+        add(buyPriceLabel, "align right");
+        add(buyPriceTf, "width 60:80:100,align right, wrap");
+        add(sellPriceLabel, "align right");
+        add(sellPriceTf, "width 60:80:100,align right");
+        add(wholesalePriceLabel, "align right");
+        add(wholeSalePriceTf, "width 60:80:100,align right, wrap");
+        add(priceLabel, "align right");
+        add(priceTf, "width 60:80:100,align right");
+        add(measureLabel, "align right");
+        add(measureTf, "width 60:80:100,align right, wrap");
         add(addToDBJButton, "span, align center center");
     }
 
