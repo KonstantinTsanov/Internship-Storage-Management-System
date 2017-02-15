@@ -30,13 +30,13 @@ public class MenuJPanel extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    public MenuJPanel(StorageManagementJFrame frame) {
+    public MenuJPanel(CardLayoutCallback frame) {
         super();
         this.frame = frame;
         setLayout(new MigLayout());
         initializeComponents();
         addComponents();
-        setComponentText("en", "US");
+        setComponentText(new Locale("en", "US"));
 
     }
 
@@ -64,8 +64,7 @@ public class MenuJPanel extends javax.swing.JPanel {
         add(addContractorsJButton, "wrap");
     }
 
-    public void setComponentText(String language, String country) {
-        Locale locale = new Locale(language, country);
+    public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
 
         menuLabel.setText(r.getString("MenuJPanel.menuLabel.text"));

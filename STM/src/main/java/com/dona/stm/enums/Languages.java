@@ -13,18 +13,8 @@ import lombok.Getter;
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public enum Languages {
-    English("English", "en", "US") {
-        @Override
-        public Locale getLocale() {
-            return new Locale(getShortLanguage(), getShortCountry());
-        }
-    },
-    Bulgarian("Български", "bg", "BG") {
-        @Override
-        public Locale getLocale() {
-            return new Locale(getShortLanguage(), getShortCountry());
-        }
-    };
+    English("English", "en", "US"),
+    Bulgarian("Български", "bg", "BG");
     @Getter
     private final String name;
     @Getter
@@ -38,5 +28,7 @@ public enum Languages {
         this.shortCountry = shortCountry;
     }
 
-    public abstract Locale getLocale();
+    public Locale getLocale() {
+        return new Locale(getShortLanguage(), getShortCountry());
+    }
 }

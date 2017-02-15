@@ -55,12 +55,12 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JButton addToDBJButton;
 
     public AddProductJPanel() {
-        setPreferredSize(new Dimension(300, 350));
+        setPreferredSize(new Dimension(450, 350));
         MigLayout layout = new MigLayout("", "100!", "35!");
         setLayout(layout);
         InitializeComponents();
         AddComponents();
-        SetComponentText("en", "US");
+        SetComponentText(new Locale("en", "US"));
     }
 
     private void InitializeComponents() {
@@ -116,12 +116,11 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(priceLabel);
         add(priceTf, "width 60:80:100");
         add(measureLabel);
-        add(measureTf, "width 60:80:100, wrap");
-        add(addToDBJButton, "dock south");
+        add(measureTf, "width 60:80:100, span");
+        add(addToDBJButton, "width 100:150:200, span, align center center");
     }
 
-    public void SetComponentText(String language, String country) {
-        Locale locale = new Locale(language, country);
+    public void SetComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("AddProductJPanel.mainLabel.text"));
         codeLabel.setText(r.getString("AddProductJPanel.codeLabel.text"));

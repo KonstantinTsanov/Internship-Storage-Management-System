@@ -61,12 +61,11 @@ public class ContractorsJPanel extends JPanel {
     private JButton addContractorButton;
 
     public ContractorsJPanel() {
-//        setPreferredSize(new Dimension(300, 350));
-        //(new Dimension(500, 500));
+        setPreferredSize(new Dimension(450, 350));
         setLayout(new MigLayout("", "100!", "35!"));
         initializeComponents();
         addComponents();
-        setComponentText("en", "US");
+        setComponentText(new Locale("en", "US"));
     }
 
     private void initializeComponents() {
@@ -152,8 +151,7 @@ public class ContractorsJPanel extends JPanel {
         add(addContractorButton, "dock south");
     }
 
-    public void setComponentText(String language, String country) {
-        Locale locale = new Locale(language, country);
+    public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("ContractorsJPanel.mainLabel.text"));
         bulstatLabel.setText(r.getString("ContractorsJPanel.bulstatLabel.text"));
