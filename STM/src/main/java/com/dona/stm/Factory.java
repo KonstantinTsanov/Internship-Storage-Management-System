@@ -15,4 +15,8 @@ public class Factory {
     {
         return new Product(id,name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
     }
+    
+    public IContractorsEntity CreateContractor(String bulstat,String name,String address,String accountablePerson,String receiverOfGoods,String fax,String bank,String bankCode,String IBAN,String taxRegistryNumber,String VATregistration,String phone) {
+        return new ContractorsEntity(bulstat,name,address,accountablePerson,receiverOfGoods,fax,bank,bankCode,IBAN,taxRegistryNumber,VATregistration,phone);
+    }
 }
