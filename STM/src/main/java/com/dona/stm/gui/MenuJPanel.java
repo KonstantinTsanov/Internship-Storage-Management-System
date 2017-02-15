@@ -6,7 +6,14 @@
 package com.dona.stm.gui;
 
 import com.dona.stm.enums.CardLayoutJPanels;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -16,6 +23,9 @@ public class MenuJPanel extends javax.swing.JPanel {
 
     //parent
     private final CardLayoutCallback frame;
+    private JLabel menuLabel;
+    private JButton addProductJButton;
+    private JButton addContractorsJButton;
 
     /**
      * Creates new form NewJPanel
@@ -23,7 +33,44 @@ public class MenuJPanel extends javax.swing.JPanel {
     public MenuJPanel(StorageManagementJFrame frame) {
         super();
         this.frame = frame;
-        initComponents();
+        setLayout(new MigLayout());
+        initializeComponents();
+        addComponents();
+        setComponentText("en", "US");
+
+    }
+
+    private void initializeComponents() {
+        menuLabel = new JLabel();
+        addProductJButton = new JButton();
+        addContractorsJButton = new JButton();
+        addProductJButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Assortment.toString());
+            }
+        });
+        addContractorsJButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Contractors.toString());
+            }
+        });
+    }
+
+    private void addComponents() {
+        add(menuLabel, "wrap");
+        add(addProductJButton, "wrap");
+        add(addContractorsJButton, "wrap");
+    }
+
+    public void setComponentText(String language, String country) {
+        Locale locale = new Locale(language, country);
+        ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
+
+        menuLabel.setText(r.getString("MenuJPanel.menuLabel.text"));
+        addProductJButton.setText(r.getString("MenuJPanel.addProductJButton.text"));
+        addContractorsJButton.setText(r.getString("MenuJPanel.addContractorsJButton.text"));
     }
 
     /**
@@ -35,69 +82,18 @@ public class MenuJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        assortmentsJButton1 = new javax.swing.JButton();
-        contractorsJButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
-        assortmentsJButton1.setText("Assortments");
-        assortmentsJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assortmentsJButton1ActionPerformed(evt);
-            }
-        });
-
-        contractorsJButton1.setText("Contractors");
-        contractorsJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contractorsJButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Menu");
-        jLabel1.setToolTipText("");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(assortmentsJButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(contractorsJButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 113, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(assortmentsJButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(contractorsJButton1)
-                .addContainerGap(200, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void assortmentsJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assortmentsJButton1ActionPerformed
-        frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Assortment.toString());
-    }//GEN-LAST:event_assortmentsJButton1ActionPerformed
-
-    private void contractorsJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contractorsJButton1ActionPerformed
-        frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Contractors.toString());
-    }//GEN-LAST:event_contractorsJButton1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assortmentsJButton1;
-    private javax.swing.JButton contractorsJButton1;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

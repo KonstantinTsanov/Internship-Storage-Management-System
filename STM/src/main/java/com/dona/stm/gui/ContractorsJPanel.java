@@ -5,6 +5,7 @@
  */
 package com.dona.stm.gui;
 
+import java.awt.Dimension;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
@@ -60,15 +61,15 @@ public class ContractorsJPanel extends JPanel {
     private JButton addContractorButton;
 
     public ContractorsJPanel() {
-        setLayout(new MigLayout("", "100!", "40!"));
-        InitializeComponents();
-        AddComponents();
-
-        //SetComponentText("bg", "BG");
-        SetComponentText("en", "US");
+//        setPreferredSize(new Dimension(300, 350));
+        //(new Dimension(500, 500));
+        setLayout(new MigLayout("", "100!", "35!"));
+        initializeComponents();
+        addComponents();
+        setComponentText("en", "US");
     }
 
-    private void InitializeComponents() {
+    private void initializeComponents() {
         mainLabel = new JLabel();
 
         bulstatLabel = new JLabel();
@@ -110,7 +111,7 @@ public class ContractorsJPanel extends JPanel {
         addContractorButton = new JButton();
     }
 
-    private void AddComponents() {
+    private void addComponents() {
         add(mainLabel, "span");
         add(bulstatLabel);
         add(bulstatTextFuild, "width 60:80:100");
@@ -119,39 +120,39 @@ public class ContractorsJPanel extends JPanel {
         add(nameTextField, "width 60:80:100, wrap");
 
         add(addressLabel);
-        add(addressTextField, "width 60:80:100, wrap");
+        add(addressTextField, "width 60:80:100");
 
         add(apLabel);
         add(apTextField, "width 60:80:100, wrap");
 
         add(receiverGoodsLabel);
-        add(receiverGoodsTextField, "width 60:80:100, wrap");
+        add(receiverGoodsTextField, "width 60:80:100");
 
         add(faxLabel);
         add(faxTextField, "width 60:80:100, wrap");
 
         add(bankLabel);
-        add(bankTextField, "width 60:80:100, wrap");
+        add(bankTextField, "width 60:80:100");
 
         add(bankCodeLabel);
         add(bankCodeTextField, "width 60:80:100, wrap");
 
         add(IBANLabel);
-        add(IBANTextField, "width 60:80:100, wrap");
+        add(IBANTextField, "width 60:80:100");
 
         add(taxRegistryNumberLabel);
         add(taxRegistryNumberTextField, "width 60:80:100, wrap");
 
         add(VATregistrationLabel);
-        add(VATregistrationTextField, "width 60:80:100, wrap");
+        add(VATregistrationTextField, "width 60:80:100");
 
         add(phoneNumberLabel);
         add(phoneNumberTextField, "width 60:80:100, wrap");
 
-        add(addContractorButton, "width 40:60:80, wrap");
+        add(addContractorButton, "dock south");
     }
 
-    public void SetComponentText(String language, String country) {
+    public void setComponentText(String language, String country) {
         Locale locale = new Locale(language, country);
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("ContractorsJPanel.mainLabel.text"));

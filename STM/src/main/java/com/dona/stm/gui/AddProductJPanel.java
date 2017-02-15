@@ -56,8 +56,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     public AddProductJPanel() {
         setPreferredSize(new Dimension(300, 350));
-        setMaximumSize(new Dimension(500, 500));
-        MigLayout layout = new MigLayout("", "[90!]", "[40!]");
+        MigLayout layout = new MigLayout("", "100!", "35!");
         setLayout(layout);
         InitializeComponents();
         AddComponents();
@@ -100,25 +99,25 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     private void AddComponents() {
         add(mainLabel, "span");
-        add(codeLabel, "align right");
-        add(codeTf, "width 60:80:100,align right");
-        add(nameLabel, "align right");
-        add(nameJSPane, "width 80:100:120, height 50:70:90,align right, span 1 2, wrap");
-        add(currencyLabel, "align right");
-        add(currencyTf, "width 60:80:100,align right, wrap");
-        add(discountLabel, "align right");
-        add(discountTf, "width 60:80:100,align right");
-        add(buyPriceLabel, "align right");
-        add(buyPriceTf, "width 60:80:100,align right, wrap");
-        add(sellPriceLabel, "align right");
-        add(sellPriceTf, "width 60:80:100,align right");
-        add(wholesalePriceLabel, "align right");
-        add(wholeSalePriceTf, "width 60:80:100,align right, wrap");
-        add(priceLabel, "align right");
-        add(priceTf, "width 60:80:100,align right");
-        add(measureLabel, "align right");
-        add(measureTf, "width 60:80:100,align right, wrap");
-        add(addToDBJButton, "span, align center center");
+        add(codeLabel);
+        add(codeTf, "width 60:80:100");
+        add(nameLabel);
+        add(nameJSPane, "width 80:100:120, height 50:70:90, span 1 2, wrap");
+        add(currencyLabel);
+        add(currencyTf, "width 60:80:100, wrap");
+        add(discountLabel);
+        add(discountTf, "width 60:80:100");
+        add(buyPriceLabel);
+        add(buyPriceTf, "width 60:80:100, wrap");
+        add(sellPriceLabel);
+        add(sellPriceTf, "width 60:80:100");
+        add(wholesalePriceLabel);
+        add(wholeSalePriceTf, "width 60:80:100, wrap");
+        add(priceLabel);
+        add(priceTf, "width 60:80:100");
+        add(measureLabel);
+        add(measureTf, "width 60:80:100, wrap");
+        add(addToDBJButton, "dock south");
     }
 
     public void SetComponentText(String language, String country) {
@@ -141,9 +140,9 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private void addToDBJButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
         try {
-             //long id, String name, String measure, String currency,
-                     //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
-                            
+            //long id, String name, String measure, String currency,
+            //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
+
             String id = codeTf.getText();
             String name = nameTa.getText();
             String measure = measureTf.getText();
@@ -153,12 +152,12 @@ public class AddProductJPanel extends javax.swing.JPanel {
             String sellPrice = sellPriceTf.getText();
             String sellPriceWholeSaler = wholeSalePriceTf.getText();
             String retailersPrice = priceTf.getText();
-             Factory fa = new Factory();
-            IProduct  prod = fa.createProduct(id, name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
+            Factory fa = new Factory();
+            IProduct prod = fa.createProduct(id, name, measure, currency, discount, buyPrice, sellPrice, sellPriceWholeSaler, retailersPrice);
             dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");
             db.insertIntoAssortment(prod);
-                    } catch (SQLException ex) {
+        } catch (SQLException ex) {
             log.log(Level.SEVERE, null, ex);
-                    }
+        }
     }
 }

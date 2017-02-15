@@ -34,7 +34,7 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
      */
     public StorageManagementJFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(580, 400));
+        setPreferredSize(new Dimension(580, 420));
         setResizable(false);
         createMenuBar();
         optionsJPanel = new MenuJPanel(this);
@@ -54,6 +54,8 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
         String shortLanguage = language.getShortLanguage();
         String shortCountry = language.getShortCountry();
         assortmentsAddingJPanel.SetComponentText(shortLanguage, shortCountry);
+        contractorsJPanel.setComponentText(shortLanguage, shortCountry);
+        optionsJPanel.setComponentText(shortLanguage, shortCountry);
     }
 
     private void createMenuBar() {
