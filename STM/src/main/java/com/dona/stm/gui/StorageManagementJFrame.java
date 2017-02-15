@@ -6,14 +6,11 @@
 package com.dona.stm.gui;
 
 import com.dona.stm.enums.CardLayoutJPanels;
-import static com.dona.stm.enums.CardLayoutJPanels.Contractors;
 import com.dona.stm.enums.Languages;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -25,7 +22,7 @@ import javax.swing.JPanel;
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class StorageManagementJFrame extends javax.swing.JFrame implements CardLayoutCallback {
-    
+
     private JPanel cardJPanel;
     private ContractorsJPanel contractorsJPanel;
     private AddProductJPanel assortmentsAddingJPanel;
@@ -47,22 +44,18 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CardLayoutJPanels.Assortment.toString());
         cardJPanel.add(contractorsJPanel, CardLayoutJPanels.Contractors.toString());
-        
+
         add(optionsJPanel, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
         pack();
     }
 
-    private void setLanguage(String language, String country) {
-        assortmentsAddingJPanel.SetComponentText(language, country);
-        contractorsJPanel.SetComponentText(language, country);
-    
     private void setLanguage(Languages language) {
         String shortLanguage = language.getShortLanguage();
         String shortCountry = language.getShortCountry();
         assortmentsAddingJPanel.SetComponentText(shortLanguage, shortCountry);
     }
-    
+
     private void createMenuBar() {
         //Menu bar
         JMenuBar menubar = new JMenuBar();
@@ -90,7 +83,7 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
         }
         options.add(languages);
         menubar.add(options);
-        
+
         setJMenuBar(menubar);
     }
 
@@ -155,12 +148,12 @@ public class StorageManagementJFrame extends javax.swing.JFrame implements CardL
             }
         });
     }
-    
+
     @Override
     public JPanel getCardJPanel() {
         return cardJPanel;
     }
-    
+
     @Override
     public CardLayout getCardLayout() {
         return cardLayout;
