@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class StorageManagementJFrame extends JFrame implements CardLayoutCallback {
-
+    
     private JPanel cardJPanel;
     private ContractorsJPanel contractorsJPanel;
     private AddProductJPanel assortmentsAddingJPanel;
@@ -35,26 +35,26 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
     private JMenuBar topMenuBar;
     private JMenu fileJMenu, optionsJMenu, languageJMenu;
     private JMenuItem exitJMenuItem;
-
+    
     public StorageManagementJFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(580, 420));
-        setPreferredSize(new Dimension(580, 420));
-
+        setMinimumSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(800, 600));
+        setResizable(false);
         initComponents();
         initMenuBar();
-
+        
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CardLayoutJPanels.Assortment.toString());
         cardJPanel.add(contractorsJPanel, CardLayoutJPanels.Contractors.toString());
-
+        
         setLanguage(new Locale("bg", "BG"));
-
+        
         add(applicationMenu, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
         pack();
     }
-
+    
     private void initComponents() {
         topMenuBar = new JMenuBar();
         applicationMenu = new MenuJPanel(this);
@@ -62,13 +62,13 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         contractorsJPanel = new ContractorsJPanel();
         assortmentsAddingJPanel = new AddProductJPanel();
     }
-
+    
     private void initMenuBar() {
         createFileMenu();
         createOptionsMenu();
         setJMenuBar(topMenuBar);
     }
-
+    
     private void createFileMenu() {
         fileJMenu = new JMenu();
         fileJMenu.setMnemonic(KeyEvent.VK_F);
@@ -81,7 +81,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         fileJMenu.add(exitJMenuItem);
         topMenuBar.add(fileJMenu);
     }
-
+    
     private void createOptionsMenu() {
         optionsJMenu = new JMenu();
         optionsJMenu.setMnemonic(KeyEvent.VK_O);
@@ -99,7 +99,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         optionsJMenu.add(languageJMenu);
         topMenuBar.add(optionsJMenu);
     }
-
+    
     private void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         fileJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.fileJMenu"));
@@ -107,14 +107,14 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         optionsJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.optionsJMenu"));
         languageJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.languageJMenu"));
     }
-
+    
     private void setLanguage(Locale locale) {
         assortmentsAddingJPanel.setComponentText(locale);
         contractorsJPanel.setComponentText(locale);
         applicationMenu.setComponentText(locale);
         setComponentText(locale);
     }
-
+    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -132,7 +132,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 StorageManagementJFrame frame = new StorageManagementJFrame();
@@ -140,12 +140,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
             }
         });
     }
-
+    
     @Override
     public CardLayout getCardLayout() {
         return cardLayout;
     }
-
+    
     @Override
     public JPanel getCardJPanel() {
         return cardJPanel;

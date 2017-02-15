@@ -6,6 +6,7 @@
 package com.dona.stm.gui;
 
 import com.dona.stm.enums.CardLayoutJPanels;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
@@ -40,6 +41,8 @@ public class MenuJPanel extends javax.swing.JPanel {
 
     private void initializeComponents() {
         menuLabel = new JLabel();
+        menuLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
         addProductJButton = new JButton();
         addContractorsJButton = new JButton();
         addProductJButton.addActionListener(new ActionListener() {

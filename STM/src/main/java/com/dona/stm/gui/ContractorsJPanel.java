@@ -6,6 +6,7 @@
 package com.dona.stm.gui;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
@@ -61,14 +62,15 @@ public class ContractorsJPanel extends JPanel {
     private JButton addContractorButton;
 
     public ContractorsJPanel() {
-        setPreferredSize(new Dimension(450, 350));
-        setLayout(new MigLayout("", "100!", "35!"));
+        setPreferredSize(new Dimension(600, 300));
+        setLayout(new MigLayout("", "100!", "60!"));
         initializeComponents();
         addComponents();
     }
 
     private void initializeComponents() {
         mainLabel = new JLabel();
+        mainLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
         bulstatLabel = new JLabel();
         bulstatTextFuild = new JTextField();

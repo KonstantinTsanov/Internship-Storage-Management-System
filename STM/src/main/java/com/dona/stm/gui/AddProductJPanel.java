@@ -9,6 +9,7 @@ import com.dona.stm.Factory;
 import com.dona.stm.IProduct;
 import com.dona.stm.dba.dbAccess;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.sql.SQLException;
@@ -55,8 +56,8 @@ public class AddProductJPanel extends javax.swing.JPanel {
     private JButton addToDBJButton;
 
     public AddProductJPanel() {
-        setPreferredSize(new Dimension(450, 350));
-        MigLayout layout = new MigLayout("", "100!", "35!");
+        setPreferredSize(new Dimension(600, 300));
+        MigLayout layout = new MigLayout("", "100!", "60!");
         setLayout(layout);
         InitializeComponents();
         AddComponents();
@@ -64,6 +65,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
     private void InitializeComponents() {
         mainLabel = new JLabel();
+        mainLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
         codeLabel = new JLabel();
         codeTf = new JTextField();
@@ -101,19 +103,19 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(codeLabel);
         add(codeTf, "width 60:80:100");
         add(nameLabel);
-        add(nameJSPane, "width 80:100:120, height 50:70:90, span 1 2, wrap");
+        add(nameJSPane, "width 100:120:140, height 70:90:110, span, wrap");
         add(currencyLabel);
-        add(currencyTf, "width 60:80:100, wrap");
+        add(currencyTf, "width 60:80:100");
         add(discountLabel);
-        add(discountTf, "width 60:80:100");
+        add(discountTf, "width 60:80:100, wrap");
         add(buyPriceLabel);
-        add(buyPriceTf, "width 60:80:100, wrap");
+        add(buyPriceTf, "width 60:80:100");
         add(sellPriceLabel);
-        add(sellPriceTf, "width 60:80:100");
+        add(sellPriceTf, "width 60:80:100, wrap");
         add(wholesalePriceLabel);
-        add(wholeSalePriceTf, "width 60:80:100, wrap");
+        add(wholeSalePriceTf, "width 60:80:100");
         add(priceLabel);
-        add(priceTf, "width 60:80:100");
+        add(priceTf, "width 60:80:100, wrap");
         add(measureLabel);
         add(measureTf, "width 60:80:100, span");
         add(addToDBJButton, "width 100:150:200, span, align center center");
