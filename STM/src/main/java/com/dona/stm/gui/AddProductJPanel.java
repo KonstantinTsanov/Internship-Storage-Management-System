@@ -100,7 +100,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(codeLabel);
         add(codeTf, "width 60:80:100");
         add(nameLabel);
-        add(nameJSPane, "width 100:120:140, height 70:90:110, span, wrap");
+        add(nameJSPane, "width 120:140:160, height 70:90:110, span, wrap");
         add(currencyLabel);
         add(currencyTf, "width 60:80:100");
         add(discountLabel);
@@ -139,7 +139,6 @@ public class AddProductJPanel extends javax.swing.JPanel {
         try {
             //long id, String name, String measure, String currency,
             //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
-
             String id = codeTf.getText();
             String name = nameTa.getText();
             String measure = measureTf.getText();
