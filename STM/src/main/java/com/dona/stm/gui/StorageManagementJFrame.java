@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -48,7 +49,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         cardJPanel.add(assortmentsAddingJPanel, CardLayoutJPanels.Assortment.toString());
         cardJPanel.add(contractorsJPanel, CardLayoutJPanels.Contractors.toString());
         
-        setLanguage(new Locale("bg", "BG"));
+        setLanguage(getLocaleFromPreferences());
         
         add(applicationMenu, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
@@ -64,12 +65,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
     }
     
     private void initMenuBar() {
-        createFileMenu();
-        createOptionsMenu();
+        createInitFileMenu();
+        createInitOptionsMenu();
         setJMenuBar(topMenuBar);
     }
     
-    private void createFileMenu() {
+    private void createInitFileMenu() {
         fileJMenu = new JMenu();
         fileJMenu.setMnemonic(KeyEvent.VK_F);
         exitJMenuItem = new JMenuItem("Exit");
@@ -82,7 +83,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         topMenuBar.add(fileJMenu);
     }
     
-    private void createOptionsMenu() {
+    private void createInitOptionsMenu() {
         optionsJMenu = new JMenu();
         optionsJMenu.setMnemonic(KeyEvent.VK_O);
         languageJMenu = new JMenu();
@@ -92,6 +93,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
                 @Override
                 public void actionPerformed(ActionEvent ActionEvent) {
                     setLanguage(lang.getLocale());
+                    setLocaleToPreferences(lang);
                 }
             });
             languageJMenu.add(language);
@@ -113,6 +115,21 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         contractorsJPanel.setComponentText(locale);
         applicationMenu.setComponentText(locale);
         setComponentText(locale);
+    }
+    
+    private Locale getLocaleFromPreferences() {
+        Preferences prefs = Preferences.userRoot().node(getClass().getName());
+        String language = "Language";
+        String country = "Country";
+        return new Locale(prefs.get(language, "en"), prefs.get(country, "US"));
+    }
+    
+    private void setLocaleToPreferences(Languages lang) {
+        Preferences prefs = Preferences.userRoot().node(getClass().getName());
+        String language = "Language";
+        String country = "Country";
+        prefs.put(language, lang.getShortLanguage());
+        prefs.put(country, lang.getShortCountry());
     }
     
     public static void main(String args[]) {
