@@ -27,7 +27,7 @@ import javax.swing.JPanel;
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class StorageManagementJFrame extends JFrame implements CardLayoutCallback {
-    
+
     private JPanel cardJPanel;
     private ContractorsJPanel contractorsJPanel;
     private AddProductJPanel assortmentsAddingJPanel;
@@ -36,7 +36,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
     private JMenuBar topMenuBar;
     private JMenu fileJMenu, optionsJMenu, languageJMenu;
     private JMenuItem exitJMenuItem;
-    
+
     public StorageManagementJFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
@@ -44,18 +44,18 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         setResizable(false);
         initComponents();
         initMenuBar();
-        
+
         cardJPanel.setLayout(cardLayout);
         cardJPanel.add(assortmentsAddingJPanel, CardLayoutJPanels.Assortment.toString());
         cardJPanel.add(contractorsJPanel, CardLayoutJPanels.Contractors.toString());
-        
+
         setLanguage(getLocaleFromPreferences());
-        
+
         add(applicationMenu, BorderLayout.WEST);
         add(cardJPanel, BorderLayout.EAST);
         pack();
     }
-    
+
     private void initComponents() {
         topMenuBar = new JMenuBar();
         applicationMenu = new MenuJPanel(this);
@@ -63,13 +63,13 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         contractorsJPanel = new ContractorsJPanel();
         assortmentsAddingJPanel = new AddProductJPanel();
     }
-    
+
     private void initMenuBar() {
         createInitFileMenu();
         createInitOptionsMenu();
         setJMenuBar(topMenuBar);
     }
-    
+
     private void createInitFileMenu() {
         fileJMenu = new JMenu();
         fileJMenu.setMnemonic(KeyEvent.VK_F);
@@ -82,7 +82,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         fileJMenu.add(exitJMenuItem);
         topMenuBar.add(fileJMenu);
     }
-    
+
     private void createInitOptionsMenu() {
         optionsJMenu = new JMenu();
         optionsJMenu.setMnemonic(KeyEvent.VK_O);
@@ -101,7 +101,14 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         optionsJMenu.add(languageJMenu);
         topMenuBar.add(optionsJMenu);
     }
-    
+
+    private void setLanguage(Locale locale) {
+        assortmentsAddingJPanel.setComponentText(locale);
+        contractorsJPanel.setComponentText(locale);
+        applicationMenu.setComponentText(locale);
+        setComponentText(locale);
+    }
+
     private void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         fileJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.fileJMenu"));
@@ -109,21 +116,14 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         optionsJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.optionsJMenu"));
         languageJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.languageJMenu"));
     }
-    
-    private void setLanguage(Locale locale) {
-        assortmentsAddingJPanel.setComponentText(locale);
-        contractorsJPanel.setComponentText(locale);
-        applicationMenu.setComponentText(locale);
-        setComponentText(locale);
-    }
-    
+
     private Locale getLocaleFromPreferences() {
         Preferences prefs = Preferences.userRoot().node(getClass().getName());
         String language = "Language";
         String country = "Country";
         return new Locale(prefs.get(language, "en"), prefs.get(country, "US"));
     }
-    
+
     private void setLocaleToPreferences(Languages lang) {
         Preferences prefs = Preferences.userRoot().node(getClass().getName());
         String language = "Language";
@@ -131,7 +131,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         prefs.put(language, lang.getShortLanguage());
         prefs.put(country, lang.getShortCountry());
     }
-    
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -149,7 +149,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StorageManagementJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 StorageManagementJFrame frame = new StorageManagementJFrame();
@@ -157,12 +157,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
             }
         });
     }
-    
+
     @Override
     public CardLayout getCardLayout() {
         return cardLayout;
     }
-    
+
     @Override
     public JPanel getCardJPanel() {
         return cardJPanel;
