@@ -9,6 +9,8 @@ import java.util.Locale;
 import lombok.Getter;
 
 /**
+ * When a new language is present in the bundle it must be added here using the
+ * following pattern Language("LanguageLabel","ShortLanguage","ShortCountry")
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
