@@ -50,7 +50,7 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         setResizable(false);
         initComponents();
         initMenuBar();
-
+        viewsJPanel.setVisible(false);
         viewsJPanel.setLayout(viewsCardLayout);
         menuJPanel.setLayout(menuCardLayout);
 

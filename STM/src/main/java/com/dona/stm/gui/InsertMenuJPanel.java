@@ -38,7 +38,7 @@ public class InsertMenuJPanel extends JPanel {
     private void initComponents() {
         menuLabel = new JLabel();
         menuLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        
+
         contractorsJButton = new JButton();
         productJButton = new JButton();
         returnJButton = new JButton();
@@ -56,18 +56,21 @@ public class InsertMenuJPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 parent.getViewsCardLayout().show(parent.getViewsJPanel(), JPanelNames.Products.toString());
+                parent.getViewsJPanel().setVisible(true);
             }
         });
         contractorsJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 parent.getViewsCardLayout().show(parent.getViewsJPanel(), JPanelNames.Contractors.toString());
+                parent.getViewsJPanel().setVisible(true);
             }
         });
         returnJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 parent.getMenuCardLayout().show(parent.getMenuJPanel(), JPanelNames.Menu.toString());
+                parent.getViewsJPanel().setVisible(false);
             }
         });
     }
