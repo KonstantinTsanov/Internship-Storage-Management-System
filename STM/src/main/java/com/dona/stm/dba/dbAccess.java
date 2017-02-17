@@ -57,11 +57,12 @@ public class dbAccess {
         statement.setString(4, contractor.getAccountablePerson());
         statement.setString(5, contractor.getReceiverOfGoods());
         statement.setString(6, contractor.getBank());
-        statement.setString(7, contractor.getIBAN());
-        statement.setString(8, contractor.getBankCode());
-        statement.setBoolean(9, contractor.getTaxRegistryNumber());
-        statement.setString(10, contractor.getVATregistration());
-        statement.setString(11, contractor.getPhone());
+        statement.setString(7, contractor.getFax());
+        statement.setString(8, contractor.getIBAN());
+        statement.setString(9, contractor.getBankCode());
+        statement.setBoolean(10, contractor.getTaxRegistryNumber());
+        statement.setString(11, contractor.getVATregistration());
+        statement.setString(12, contractor.getPhone());
         statement.executeUpdate();
     }
 
