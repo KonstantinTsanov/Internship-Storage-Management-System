@@ -6,6 +6,7 @@
 package com.dona.stm.dba;
 
 import com.dona.stm.Factory;
+import com.dona.stm.IContractorsEntity;
 import com.dona.stm.IProduct;
 import com.dona.stm.Product;
 import java.sql.Connection;
@@ -43,6 +44,24 @@ public class dbAccess {
         statement.setFloat(7, product.getSellPrice());
         statement.setFloat(8, product.getSellPriceWholeSeller());
         statement.setFloat(9, product.getRetailersPrice());
+        statement.executeUpdate();
+    }
+
+    public void insertIntoPartners(IContractorsEntity contractor) throws SQLException {
+        PreparedStatement statement;
+        //bulstat,name,address,accountablePerson,receiverOfGoods,fax,bank,bankCode,IBAN,taxRegistryNumber,VATregistration,phone
+        statement = conn.prepareStatement("INSERT INTO partners(bulstat,name,adr,mol,mol_pol,fax,bank,bankcc,bankdds,regdds,koddds,tel)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+        statement.setString(1, contractor.getBulstat());
+        statement.setString(2, contractor.getName());
+        statement.setString(3, contractor.getAddress());
+        statement.setString(4, contractor.getAccountablePerson());
+        statement.setString(5, contractor.getReceiverOfGoods());
+        statement.setString(6, contractor.getBank());
+        statement.setString(7, contractor.getIBAN());
+        statement.setString(8, contractor.getBankCode());
+        statement.setBoolean(9, contractor.getTaxRegistryNumber());
+        statement.setString(10, contractor.getVATregistration());
+        statement.setString(11, contractor.getPhone());
         statement.executeUpdate();
     }
 

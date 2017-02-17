@@ -41,9 +41,9 @@ public class ContractorsEntity implements IContractorsEntity{
     @Getter 
     @Setter(AccessLevel.PRIVATE)
     private String IBAN;
-    @Getter 
+    
     @Setter(AccessLevel.PRIVATE)
-    private String taxRegistryNumber;
+    private boolean taxRegistryNumber;
     @Getter 
     @Setter(AccessLevel.PRIVATE)
     private String VATregistration;
@@ -61,8 +61,13 @@ public class ContractorsEntity implements IContractorsEntity{
         setBank(bank);
         setBankCode(bankCode);
         setIBAN(IBAN);
-        setTaxRegistryNumber(taxRegistryNumber);
+        //TODO: validation
+        setTaxRegistryNumber(taxRegistryNumber == "Yes"?true:false);
         setVATregistration(VATregistration);
         setPhone(phone);
+    }
+    
+    public boolean getTaxRegistryNumber() {
+        return this.taxRegistryNumber;
     }
 }

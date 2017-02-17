@@ -29,7 +29,7 @@ public interface IContractorsEntity {
 
     String getIBAN();
 
-    String getTaxRegistryNumber();
+    boolean getTaxRegistryNumber();
 
     String getVATregistration();
 

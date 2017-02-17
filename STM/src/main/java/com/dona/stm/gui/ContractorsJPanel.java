@@ -5,20 +5,29 @@
  */
 package com.dona.stm.gui;
 
+import com.dona.stm.Factory;
+import com.dona.stm.IContractorsEntity;
+import com.dona.stm.dba.dbAccess;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import lombok.extern.java.Log;
 import net.miginfocom.swing.MigLayout;
 
 /**
  *
  * @author Iliya Velev <velev_bg@mail.bg>
  */
+@Log
 public class ContractorsJPanel extends JPanel {
 
     private JLabel mainLabel;
@@ -66,6 +75,7 @@ public class ContractorsJPanel extends JPanel {
         setLayout(new MigLayout("", "100!", "60!"));
         initializeComponents();
         addComponents();
+        attachListeners();
     }
 
     private void initializeComponents() {
@@ -152,6 +162,42 @@ public class ContractorsJPanel extends JPanel {
         add(addContractorButton, "width 100:150:200, span, align center center");
     }
 
+    private void attachListeners() {
+        
+        addContractorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addContractorToDB();
+            }
+        });
+    }
+    
+    private void addContractorToDB() {
+         try {
+            String bulstat = bulstatTextFuild.getText();
+            String name = nameTextField.getText();
+            String address = addressTextField.getText();
+            String accountablePerson = apTextField.getText();
+            String receiverOfGoods = receiverGoodsTextField.getText();
+            String fax = faxTextField.getText();
+            String bank = bankTextField.getText();
+            String bankCode = bankCodeTextField.getText();
+            String IBAN = IBANTextField.getText();
+            String taxRegistryNumber = taxRegistryNumberTextField.getText();
+            String VATregistration =  VATregistrationTextField.getText();
+            String phone =  phoneNumberTextField.getText();
+            Factory fa = new Factory();
+            IContractorsEntity cont = fa.CreateContractor(bulstat,name,address,accountablePerson,receiverOfGoods,fax,bank,bankCode,IBAN,taxRegistryNumber,VATregistration,phone);
+            dbAccess db = new dbAccess("jdbc:mysql://localhost:3306/productmanagementsystem?autoReconnect=true&useSSL=false", "root", "1234");          
+            db.insertIntoPartners(cont);
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, null, ex);
+        }
+    }
+        
+
+   
+    
     public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("ContractorsJPanel.mainLabel.text"));

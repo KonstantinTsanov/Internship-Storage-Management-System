@@ -10,6 +10,8 @@ import com.dona.stm.IProduct;
 import com.dona.stm.dba.dbAccess;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -58,6 +60,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
         setLayout(layout);
         InitializeComponents();
         AddComponents();
+        attachListeners();
     }
 
     private void InitializeComponents() {
@@ -133,12 +136,20 @@ public class AddProductJPanel extends javax.swing.JPanel {
         addToDBJButton.setText(r.getString("AddProductJPanel.addToDBJButton.text"));
 
     }
-
-    private void addToDBJButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    
+    private void attachListeners()
+    {
+        addToDBJButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               addToDBJButtonActionPerformed();
+            }
+        });
+    }
+    
+    private void addToDBJButtonActionPerformed() {
 
         try {
-            //long id, String name, String measure, String currency,
-            //float discount, String buyPrice, String sellPrice, String sellPriceWholeSaler, String retailersPrice
             String id = codeTf.getText();
             String name = nameTa.getText();
             String measure = measureTf.getText();
