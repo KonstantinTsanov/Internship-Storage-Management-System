@@ -5,7 +5,7 @@
  */
 package com.dona.stm.gui;
 
-import com.dona.stm.enums.CardLayoutJPanels;
+import com.dona.stm.enums.JPanelNames;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,52 +20,52 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
-public class MenuJPanel extends JPanel {
+public class AppMenuJPanel extends JPanel {
 
     private final CardLayoutCallback frame;
     private JLabel menuLabel;
-    private JButton addProductJButton;
-    private JButton addContractorsJButton;
+    private JButton insertionJButton;
+    private JButton removalJButton;
 
-    public MenuJPanel(CardLayoutCallback frame) {
+    public AppMenuJPanel(CardLayoutCallback frame) {
         super();
         this.frame = frame;
         setLayout(new MigLayout());
-        initializeComponents();
+        initComponents();
         addComponents();
     }
 
-    private void initializeComponents() {
+    private void initComponents() {
         menuLabel = new JLabel();
         menuLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
-        addProductJButton = new JButton();
-        addContractorsJButton = new JButton();
-        addProductJButton.addActionListener(new ActionListener() {
+        insertionJButton = new JButton();
+        removalJButton = new JButton();
+        insertionJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Assortment.toString());
+                frame.getMenuCardLayout().show(frame.getMenuJPanel(), JPanelNames.Insert.toString());
             }
         });
-        addContractorsJButton.addActionListener(new ActionListener() {
+        removalJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.getCardLayout().show(frame.getCardJPanel(), CardLayoutJPanels.Contractors.toString());
+//                frame.getMenuCardLayout().show(frame.getMenuJPanel(), JPanelNames.Select.toString());
             }
         });
     }
 
     private void addComponents() {
         add(menuLabel, "wrap");
-        add(addProductJButton, "wrap");
-        add(addContractorsJButton, "wrap");
+        add(insertionJButton, "wrap");
+        add(removalJButton, "wrap");
     }
 
     public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
 
         menuLabel.setText(r.getString("MenuJPanel.menuLabel.text"));
-        addProductJButton.setText(r.getString("MenuJPanel.addProductJButton.text"));
-        addContractorsJButton.setText(r.getString("MenuJPanel.addContractorsJButton.text"));
+        insertionJButton.setText(r.getString("MenuJPanel.addProductJButton.text"));
+        removalJButton.setText(r.getString("MenuJPanel.addContractorsJButton.text"));
     }
 }

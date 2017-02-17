@@ -5,13 +5,18 @@
  */
 package com.dona.stm.enums;
 
+import com.dona.stm.gui.AppMenuJPanel;
+
 /**
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  * Card Layout JPanel Names represents the name of the panels within a
  * CardLayout
  */
-public enum CardLayoutJPanels {
-    Assortment,
-    Contractors
+public enum JPanelNames {
+    Products,
+    Contractors,
+    Menu,
+    Insert,
+    Select
 }

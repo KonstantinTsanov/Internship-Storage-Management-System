@@ -14,7 +14,11 @@ import javax.swing.JPanel;
  */
 public interface CardLayoutCallback {
 
-    public CardLayout getCardLayout();
+    public CardLayout getViewsCardLayout();
 
-    public JPanel getCardJPanel();
+    public JPanel getViewsJPanel();
+
+    public CardLayout getMenuCardLayout();
+
+    public JPanel getMenuJPanel();
 }

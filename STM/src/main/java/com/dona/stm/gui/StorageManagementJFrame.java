@@ -5,7 +5,7 @@
  */
 package com.dona.stm.gui;
 
-import com.dona.stm.enums.CardLayoutJPanels;
+import com.dona.stm.enums.JPanelNames;
 import com.dona.stm.enums.Languages;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -28,11 +28,17 @@ import javax.swing.JPanel;
  */
 public class StorageManagementJFrame extends JFrame implements CardLayoutCallback {
 
-    private JPanel cardJPanel;
+    //frame jpanels
+    private JPanel viewsJPanel, menuJPanel;
+    //frame card layouts
+    private CardLayout menuCardLayout, viewsCardLayout;
+    //views
     private ContractorsJPanel contractorsJPanel;
     private AddProductJPanel assortmentsAddingJPanel;
-    private final CardLayout cardLayout = new CardLayout();
-    private MenuJPanel applicationMenu;
+    //app menus
+    private AppMenuJPanel appMenuJPanel;
+    private InsertMenuJPanel insertMenuJPanel;
+    //frame menus
     private JMenuBar topMenuBar;
     private JMenu fileJMenu, optionsJMenu, languageJMenu;
     private JMenuItem exitJMenuItem;
@@ -45,21 +51,31 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         initComponents();
         initMenuBar();
 
-        cardJPanel.setLayout(cardLayout);
-        cardJPanel.add(assortmentsAddingJPanel, CardLayoutJPanels.Assortment.toString());
-        cardJPanel.add(contractorsJPanel, CardLayoutJPanels.Contractors.toString());
+        viewsJPanel.setLayout(viewsCardLayout);
+        menuJPanel.setLayout(menuCardLayout);
+
+        viewsJPanel.add(assortmentsAddingJPanel, JPanelNames.Products.toString());
+        viewsJPanel.add(contractorsJPanel, JPanelNames.Contractors.toString());
+
+        menuJPanel.add(appMenuJPanel, JPanelNames.Menu.toString());
+        menuJPanel.add(insertMenuJPanel, JPanelNames.Insert.toString());
 
         setLanguage(getLocaleFromPreferences());
 
-        add(applicationMenu, BorderLayout.WEST);
-        add(cardJPanel, BorderLayout.EAST);
+        add(menuJPanel, BorderLayout.WEST);
+        add(viewsJPanel, BorderLayout.EAST);
         pack();
     }
 
     private void initComponents() {
+        viewsCardLayout = new CardLayout();
+        menuCardLayout = new CardLayout();
+
         topMenuBar = new JMenuBar();
-        applicationMenu = new MenuJPanel(this);
-        cardJPanel = new JPanel();
+        insertMenuJPanel = new InsertMenuJPanel(this);
+        appMenuJPanel = new AppMenuJPanel(this);
+        viewsJPanel = new JPanel();
+        menuJPanel = new JPanel();
         contractorsJPanel = new ContractorsJPanel();
         assortmentsAddingJPanel = new AddProductJPanel();
     }
@@ -105,7 +121,8 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
     private void setLanguage(Locale locale) {
         assortmentsAddingJPanel.setComponentText(locale);
         contractorsJPanel.setComponentText(locale);
-        applicationMenu.setComponentText(locale);
+        appMenuJPanel.setComponentText(locale);
+        insertMenuJPanel.setComponentText(locale);
         setComponentText(locale);
     }
 
@@ -159,12 +176,22 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
     }
 
     @Override
-    public CardLayout getCardLayout() {
-        return cardLayout;
+    public CardLayout getViewsCardLayout() {
+        return viewsCardLayout;
     }
 
     @Override
-    public JPanel getCardJPanel() {
-        return cardJPanel;
+    public JPanel getViewsJPanel() {
+        return viewsJPanel;
+    }
+
+    @Override
+    public CardLayout getMenuCardLayout() {
+        return menuCardLayout;
+    }
+
+    @Override
+    public JPanel getMenuJPanel() {
+        return menuJPanel;
     }
 }
