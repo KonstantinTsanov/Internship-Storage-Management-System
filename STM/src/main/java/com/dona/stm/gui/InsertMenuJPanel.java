@@ -48,7 +48,7 @@ public class InsertMenuJPanel extends JPanel {
         add(menuLabel, "wrap");
         add(contractorsJButton, "wrap");
         add(productJButton, "wrap");
-        add(returnJButton, "dock south");
+        add(returnJButton, "wrap");
     }
 
     private void attachListeners() {
