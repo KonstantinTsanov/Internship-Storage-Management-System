@@ -17,33 +17,40 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 /**
+ * One of the menu panels, place the insert buttons here.
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
 public class InsertMenuJPanel extends JPanel {
 
-    private final CardLayoutCallback parent;
+    //the parent jframe
+    private final CardLayoutCallback jframeParent;
     private JLabel menuLabel;
     private JButton contractorsJButton, productJButton;
     private JButton returnJButton;
 
     public InsertMenuJPanel(CardLayoutCallback parent) {
-        this.parent = parent;
+        this.jframeParent = parent;
         setLayout(new MigLayout());
         initComponents();
         addComponents();
         attachListeners();
     }
 
+    /**
+     * Initializes all components
+     */
     private void initComponents() {
         menuLabel = new JLabel();
         menuLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-
         contractorsJButton = new JButton();
         productJButton = new JButton();
         returnJButton = new JButton();
     }
 
+    /**
+     * Adds the components to the panel
+     */
     private void addComponents() {
         add(menuLabel, "wrap");
         add(contractorsJButton, "wrap");
@@ -51,30 +58,41 @@ public class InsertMenuJPanel extends JPanel {
         add(returnJButton, "wrap");
     }
 
+    /**
+     * Attaches listeners to the components
+     */
     private void attachListeners() {
+        //Button to insert into products
         productJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                parent.getViewsCardLayout().show(parent.getViewsJPanel(), JPanelNames.Products.toString());
-                parent.getViewsJPanel().setVisible(true);
+                jframeParent.getViewsCardLayout().show(jframeParent.getViewsJPanel(), JPanelNames.Products.toString());
+                jframeParent.getViewsJPanel().setVisible(true);
             }
         });
+        //Button to insert into contractors
         contractorsJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                parent.getViewsCardLayout().show(parent.getViewsJPanel(), JPanelNames.Contractors.toString());
-                parent.getViewsJPanel().setVisible(true);
+                jframeParent.getViewsCardLayout().show(jframeParent.getViewsJPanel(), JPanelNames.Contractors.toString());
+                jframeParent.getViewsJPanel().setVisible(true);
             }
         });
+        //button to return to the previous menu
         returnJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                parent.getMenuCardLayout().show(parent.getMenuJPanel(), JPanelNames.Menu.toString());
-                parent.getViewsJPanel().setVisible(false);
+                jframeParent.getMenuCardLayout().show(jframeParent.getMenuJPanel(), JPanelNames.Menu.toString());
+                jframeParent.getViewsJPanel().setVisible(false);
             }
         });
     }
 
+    /**
+     * Sets the components' text
+     *
+     * @param locale determines the component text
+     */
     public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         menuLabel.setText(r.getString("InsertMenuJPanel.menuLabel.text"));

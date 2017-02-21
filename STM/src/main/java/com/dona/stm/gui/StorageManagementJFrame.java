@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /**
+ * The main entry point is here.
  *
  * @author Konstantin Tsanov <k.tsanov@gmail.com>
  */
@@ -67,10 +68,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         pack();
     }
 
+    /**
+     * Initializes all components, excluding the submenus
+     */
     private void initComponents() {
         viewsCardLayout = new CardLayout();
         menuCardLayout = new CardLayout();
-
         topMenuBar = new JMenuBar();
         insertMenuJPanel = new InsertMenuJPanel(this);
         appMenuJPanel = new AppMenuJPanel(this);
@@ -80,12 +83,18 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         assortmentsAddingJPanel = new AddProductJPanel();
     }
 
+    /**
+     * Initializes the menu bar
+     */
     private void initMenuBar() {
         createInitFileMenu();
         createInitOptionsMenu();
         setJMenuBar(topMenuBar);
     }
 
+    /**
+     * creates and initializes the file menu and submenus
+     */
     private void createInitFileMenu() {
         fileJMenu = new JMenu();
         fileJMenu.setMnemonic(KeyEvent.VK_F);
@@ -99,6 +108,9 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         topMenuBar.add(fileJMenu);
     }
 
+    /**
+     * Creates and initizlies the options menu and submenu
+     */
     private void createInitOptionsMenu() {
         optionsJMenu = new JMenu();
         optionsJMenu.setMnemonic(KeyEvent.VK_O);
@@ -118,6 +130,11 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         topMenuBar.add(optionsJMenu);
     }
 
+    /**
+     * Sets sets the text of the entire application
+     *
+     * @param locale determines the component text
+     */
     private void setLanguage(Locale locale) {
         assortmentsAddingJPanel.setComponentText(locale);
         contractorsJPanel.setComponentText(locale);
@@ -126,6 +143,11 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         setComponentText(locale);
     }
 
+    /**
+     * Sets the components' text
+     *
+     * @param locale determines the component text
+     */
     private void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         fileJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.fileJMenu"));
@@ -134,6 +156,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         languageJMenu.setText(r.getString("StorageManagementJFrame.optionsMenu.languageJMenu"));
     }
 
+    /**
+     * Gets the lastly used language from the registry(windows) or whatever it
+     * is in linux
+     *
+     * @return new locale object, composed of the extracted parameters
+     */
     private Locale getLocaleFromPreferences() {
         Preferences prefs = Preferences.userRoot().node(getClass().getName());
         String language = "Language";
@@ -141,6 +169,12 @@ public class StorageManagementJFrame extends JFrame implements CardLayoutCallbac
         return new Locale(prefs.get(language, "en"), prefs.get(country, "US"));
     }
 
+    /**
+     * Sets the lastly used language in the registry(windows) or whatever it is
+     * in linux
+     *
+     * @param lang enum containing the required variables
+     */
     private void setLocaleToPreferences(Languages lang) {
         Preferences prefs = Preferences.userRoot().node(getClass().getName());
         String language = "Language";
