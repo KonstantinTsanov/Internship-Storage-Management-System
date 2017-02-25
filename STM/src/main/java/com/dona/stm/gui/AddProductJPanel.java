@@ -63,6 +63,9 @@ public class AddProductJPanel extends javax.swing.JPanel {
         attachListeners();
     }
 
+    /**
+     * Initializes all components
+     */
     private void InitializeComponents() {
         mainLabel = new JLabel();
         mainLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -98,6 +101,9 @@ public class AddProductJPanel extends javax.swing.JPanel {
         addToDBJButton = new JButton();
     }
 
+    /**
+     * Adds the components to the jpanel
+     */
     private void AddComponents() {
         add(mainLabel, "span");
         add(codeLabel);
@@ -121,6 +127,12 @@ public class AddProductJPanel extends javax.swing.JPanel {
         add(addToDBJButton, "width 100:150:200, span, align center center");
     }
 
+    /**
+     * Sets the components' text based on the preferred language and
+     * geographical location
+     *
+     * @param locale language and location
+     */
     public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
         mainLabel.setText(r.getString("AddProductJPanel.mainLabel.text"));
@@ -136,17 +148,19 @@ public class AddProductJPanel extends javax.swing.JPanel {
         addToDBJButton.setText(r.getString("AddProductJPanel.addToDBJButton.text"));
 
     }
-    
-    private void attachListeners()
-    {
+
+    /**
+     * Attaches listeners to the components
+     */
+    private void attachListeners() {
         addToDBJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               addToDBJButtonActionPerformed();
+                addToDBJButtonActionPerformed();
             }
         });
     }
-    
+
     private void addToDBJButtonActionPerformed() {
 
         try {

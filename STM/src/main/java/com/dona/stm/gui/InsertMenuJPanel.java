@@ -89,9 +89,9 @@ public class InsertMenuJPanel extends JPanel {
     }
 
     /**
-     * Sets the components' text
+     * Sets the components' text based on the preferred language and geographical location
      *
-     * @param locale determines the component text
+     * @param locale language and location
      */
     public void setComponentText(Locale locale) {
         ResourceBundle r = ResourceBundle.getBundle("Bundle", locale);
